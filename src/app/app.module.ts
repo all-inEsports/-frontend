@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // COMPONENT IMPORTS
 import { LoginComponent } from './login/login.component';
+import { BackgroundVideoComponent } from './background-video/background-video.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 // ANGULAR MATERIAL IMPORTS
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -15,7 +17,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { BackgroundVideoComponent } from './background-video/background-video.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list'; 
+
+
 
 
 
@@ -23,7 +28,8 @@ import { BackgroundVideoComponent } from './background-video/background-video.co
   declarations: [
     AppComponent,
     LoginComponent,
-    BackgroundVideoComponent
+    BackgroundVideoComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +41,8 @@ import { BackgroundVideoComponent } from './background-video/background-video.co
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
