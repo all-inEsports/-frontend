@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 // COMPONENT IMPORTS
 import { LoginComponent } from './login/login.component';
@@ -16,14 +17,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BackgroundVideoComponent } from './background-video/background-video.component';
-
+import { RegisterComponent } from './register/register.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    BackgroundVideoComponent
+    BackgroundVideoComponent,
+    RegisterComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,8 @@ import { BackgroundVideoComponent } from './background-video/background-video.co
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

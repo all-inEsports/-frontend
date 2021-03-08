@@ -29,9 +29,12 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "ext-modern-runtime/material/material-all.css"
             ],
-            "scripts": []
+            "scripts": [
+              "ext-modern-runtime/modern.engine.enterprise.js"
+            ]
           },
           "configurations": {
             "production": {
