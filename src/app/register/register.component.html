@@ -1,15 +1,23 @@
+<div>
+    <div *ngIf="errorMSG">
+        {{errorMSG}}
+    </div>
+</div>
+
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
     <input type="text" formControlName="name" name="userName" placeholder="enter username">
     <br><br>
     <input type="password" formControlName="password" name="password" placeholder="enter password">
     <br><br>
-    <input type="password" formControlName="" name placeholder="enter password again">
+    <input type="password" formControlName="conPassword" name placeholder="enter password again">
     <br><br>
     <input type="email" formControlName="email" name="email" placeholder="enter email">
     <br><br>
-    
+    <input type="checkbox" formControlName="age" name="ageBox">
+    <label>By checking this box you confirm that you are 13 years old or older.</label>
     <input type="checkbox" formControlName="term" name="termAndConditions">
-    <label>Terms and Conditions</label>
+    <br><br>
+    <label>By checking this box you confirm to agree to our Terms and Conditions.</label>
     <br><br>
     <button>Register</button>
 </form>
