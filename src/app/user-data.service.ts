@@ -11,10 +11,27 @@ export class UserDataService {
   constructor(private http: HttpClient) { }
 
   getUsers():Observable<User[]> {
-    return this.http.get<User[]>(`https://allinsserservice.herokuapp.com/v1/users?page=1&perPage=10`);
+
+    let params = {
+      page: "1",
+      perPage: "50"
+    }
+
+    return this.http.get<User[]>(`https://allinsserservice.herokuapp.com/v1/users?`, {params});
   }
 
   newUser(newUser: User):Observable<any>{
     return this.http.post<any>(`https://allinsserservice.herokuapp.com/v1/user`, newUser);
+  }
+
+  getAllUsers():Observable<User[]> {
+    const perPage = Number.MAX_SAFE_INTEGER.toString();
+
+    let params = {
+      page: "1",
+      perPage: perPage
+    }
+
+    return this.http.get<User[]>(`https://allinsserservice.herokuapp.com/v1/users?`, {params});
   }
 }
