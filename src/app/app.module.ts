@@ -20,6 +20,10 @@ import { BackgroundVideoComponent } from './background-video/background-video.co
 import { RegisterComponent } from './register/register.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomepageComponent } from './homepage/homepage.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list'; 
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -28,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     BackgroundVideoComponent,
     RegisterComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatToolbarModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
