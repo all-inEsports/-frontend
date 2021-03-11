@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  x!: boolean; //temporal variable
+  x: boolean = true; //temporal variable
   errorMSG: string = '';
   loginForm!: FormGroup;
   constructor(private fb: FormBuilder, private data: UserDataService, private router: Router) { }
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmitt() {
+  onSubmit() {
     const formValue = this.loginForm.value;
 
     if(formValue.name = ""){
