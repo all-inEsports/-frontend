@@ -4,7 +4,6 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 <form (ngSubmit)="onSubmit()">
     <input type="text" name="userName" id="userName" placeholder="enter username" [(ngModel)]="user.UserName">
     <br><br>
@@ -13,31 +12,13 @@
     <input type="password" name="password2" id="password2" placeholder="enter password again" [(ngModel)]="password2">
     <br><br>
     <input type="email"  name="email" id="email" placeholder="enter email" [(ngModel)]="email">
-=======
-<form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
-
-    <input type="text" formControlName="name" name="userName" placeholder="Enter Username">
-    <br><br>
-    <input type="password" formControlName="password" name="password" placeholder="Enter Password">
-    <br><br>
-    <input type="password" formControlName="conPassword" name placeholder="Confirm Password">
-    <br><br>
-    <input type="email" formControlName="email" name="email" placeholder="Enter Email">
->>>>>>> 1e6c341ac1537814f24ad14f42d2afd1d3e1fe9f
     <br><br>
     <input type="checkbox" name="ageBox" id="age">
     <label>By checking this box you confirm that you are 13 years old or older.</label>
-<<<<<<< HEAD
     <input type="checkbox" name="termAndConditions">
-=======
->>>>>>> 1e6c341ac1537814f24ad14f42d2afd1d3e1fe9f
     <br><br>
     <input type="checkbox" formControlName="term" name="termAndConditions">
     <label>By checking this box you confirm to agree to our Terms and Conditions.</label>
     <br><br>
-<<<<<<< HEAD
     <button type="submit">Register</button>
-=======
-    <button onclick="onSubmit()">Register</button>
->>>>>>> 1e6c341ac1537814f24ad14f42d2afd1d3e1fe9f
 </form>
