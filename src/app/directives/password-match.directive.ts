@@ -10,7 +10,7 @@ export class PasswordMatchDirective {
 
   constructor(private vservice: ValidationService) { }
 
-  validate(formGroup: FormGroup): ValidationErrors | null | undefined{
+  validate(formGroup: FormGroup): ValidationErrors | null | undefined | void | boolean{
     return this.vservice.MatchPassword(this.MatchPassword[0], this.MatchPassword[1])(formGroup);
   }
 }
