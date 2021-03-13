@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   password : string = "";
   password2 : string = "";
   email : string = "";
-  age : Number = 0;
+  age : boolean = false;
   errorMSG: string = '';
   termsAndConditions: boolean = false;
 
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if(this.termsAndConditions == true){
+    if(this.termsAndConditions == true && this.age == true){
       this.user.UserName = this.userName;
       this.user.Email = this.email;
       this.user.Password = this.password;
@@ -35,8 +35,10 @@ export class RegisterComponent implements OnInit {
       this.user.ProfilePic = "default.png";
       this.user.Balance = 5000;
       this.data.register(this.user).subscribe(() => this.router.navigate(['']))
-    }else{
+    }else if(this.termsAndConditions == false){
       this.errorMSG = "Accept the Terms and Conditions to create account."
+    }else if(this.age == false){
+      this.errorMSG = "You must be 13 years old or older to create an account."
     }
     
   }

@@ -20,6 +20,11 @@
     <small *ngIf="eMail.touched && !eMail.valid">Enter email address.</small>
     <br>
     <br>
+    <input type="checkbox" name="age" required [(ngModel)]="age">
+    <label>By checking this box you confirm that you are 13 years old or older.</label>
+    <br>
+    <small *ngIf="errorMSG">{{errorMSG}}</small>
+    <br><br>
     <input type="checkbox" name="termAndConditions" required [(ngModel)]="termsAndConditions">
     <label>By checking this box you confirm to agree to our Terms and Conditions.</label>
     <br>
