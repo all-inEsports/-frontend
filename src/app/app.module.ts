@@ -24,6 +24,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list'; 
 import {MatIconModule} from '@angular/material/icon';
+import { PasswordPatternDirective } from './directives/password-pattern.directive';
+import { PasswordMatchDirective } from './directives/password-match.directive';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import {MatIconModule} from '@angular/material/icon';
     BackgroundVideoComponent,
     RegisterComponent,
     LeaderboardComponent,
-    HomepageComponent
+    HomepageComponent,
+    PasswordPatternDirective,
+    PasswordMatchDirective
   ],
   imports: [
     BrowserModule,

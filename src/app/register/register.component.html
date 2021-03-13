@@ -1,20 +1,21 @@
 
 
-<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-    <input type="text" name="userName" id="userName" placeholder="Enter Username" [(ngModel)]="userName" required #username="ngModel">
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm" [appPasswordMatch]="['password','password2']">
+    <input type="text" name="userName" id="userName" placeholder="Enter Username" [(ngModel)]="userName" required #username="ngModel" minlength="3">
     <br>
-    <small *ngIf="username.touched && !username.valid">Enter UserName.</small>
+    <small *ngIf="username.touched && !username.valid">Imvalid Username.</small>
     <br><br>
-    <input type="password" name="password" id="password" placeholder="Enter Password" [(ngModel)]="password" required #pWord="ngModel">
+    <input type="password" name="password" id="password" placeholder="Enter Password" [(ngModel)]="password" required #pWord="ngModel" appPasswordPattern>
     <br>
-    <small *ngIf="pWord.touched && !pWord.valid">Enter Password.</small>
+    <small *ngIf="pWord.touched && (pWord.errors?.invalidPassword || !pWord.valid)">Invalid Password, it should have a minimun lenght of 8, with at least one upercase, one lowercase and a digit.</small>
     <br><br>
     <input type="password" name="password2" id="password2" placeholder="Confirm Password" [(ngModel)]="password2" required #pWord2="ngModel">
     <br>
     <small *ngIf="pWord2.touched && !pWord2.valid">Password Confirmation does not match password.</small>
     <br>
+    <small *ngIf="pWord2.touched && pWord2.errors?.passwordMissmatch">Password Confirmation does not match password.</small>
     <br>
-    <input type="email"  name="email" id="email" placeholder="Enter Email" [(ngModel)]="email" required #eMail="ngModel">
+    <input type="email"  name="email" id="email" placeholder="Enter Email" [(ngModel)]="email" required #eMail="ngModel" email>
     <br>
     <small *ngIf="eMail.touched && !eMail.valid">Enter email address.</small>
     <br>
