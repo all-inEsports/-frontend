@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormsModule} from "@angular/forms";
 import { UserDataService } from "../user-data.service";
 import { Router, CanActivate } from "@angular/router";
-import { AuthService } from '@auth0/auth0-angular';
 import { AuthenticationService } from "../authentication.service";
 
 @Component({

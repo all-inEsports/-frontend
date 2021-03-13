@@ -26,7 +26,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
 import { PasswordMatchDirective } from './directives/password-match.directive';
-import { AuthModule } from '@auth0/auth0-angular';
+
 
 
 @NgModule({
@@ -56,7 +56,6 @@ import { AuthModule } from '@auth0/auth0-angular';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
