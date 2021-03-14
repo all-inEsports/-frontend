@@ -26,7 +26,7 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getGames().subscribe(games_ =>
+    this.service.getAllGames().subscribe(games_ =>
       this.Games = games_
     );
     
