@@ -2,16 +2,18 @@
     <div class="match-game-container">
         <div class="match-game-box">
             <div *ngFor="let game of Games;">
-                <mat-card [routerLink]="['/match',game._id]" class="match-game-entry">
-                    <mat-card-title *ngIf="game?.videogame[0].slug=='league-of-legends'">League of Legends</mat-card-title>
-                    <mat-card-title *ngIf="game?.videogame[0].slug=='cs-go'">Counter-Strike: Global Offensive</mat-card-title>
-                    <mat-card-title *ngIf="game?.videogame[0].slug=='dota-2'">Dota 2</mat-card-title>
-                    <div>
-                        <img class="teamImage" src="{{game?.opponents[0]?.opponent?.image_url}}">
-                        <img class="teamImage" src="{{game?.opponents[1]?.opponent?.image_url}}">
-                    </div>
-                    <span>{{game?.opponents[0]?.opponent?.name}} vs. {{game?.opponents[1]?.opponent?.name}}</span>
-                </mat-card>
+                <div *ngIf="game.opponents[0]?.opponent?.image_url && game?.opponents[1]?.opponent?.image_url">
+                    <mat-card [routerLink]="['/match',game._id]" class="match-game-entry">
+                        <mat-card-title *ngIf="game?.videogame[0].slug=='league-of-legends'">League of Legends</mat-card-title>
+                        <mat-card-title *ngIf="game?.videogame[0].slug=='cs-go'">Counter-Strike: Global Offensive</mat-card-title>
+                        <mat-card-title *ngIf="game?.videogame[0].slug=='dota-2'">Dota 2</mat-card-title>
+                        <div>
+                            <img class="teamImage" src="{{game?.opponents[0]?.opponent?.image_url}}">
+                            <img class="teamImage" src="{{game?.opponents[1]?.opponent?.image_url}}">
+                        </div>
+                        <span>{{game?.opponents[0]?.opponent?.name}} vs. {{game?.opponents[1]?.opponent?.name}}</span>
+                    </mat-card>
+                </div>
             </div>
         </div>
     </div>
