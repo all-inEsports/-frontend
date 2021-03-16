@@ -73,31 +73,18 @@
         <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
         <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
         <br>
-        <h1 class="match-game-header">Active Matches</h1>
+        <h1 class="match-game-header">Current Match</h1>
         <div class="bottom-container">
             <div class="match-game-container">
                 <div class="match-game-box">
-                    <div *ngFor="let game of Games;">
-                        <mat-card [routerLink]="['/match',game._id]" class="match-game-entry">
-                            <mat-card-title *ngIf="game.videogame[0].slug=='league-of-legends'">League of Legends</mat-card-title>
-                            <mat-card-title *ngIf="game.videogame[0].slug=='cs-go'">Counter-Strike: Global Offensive</mat-card-title>
-                            <mat-card-title *ngIf="game.videogame[0].slug=='dota-2'">Dota 2</mat-card-title>
-                        <mat-card class="match-game-entry">
-                            <mat-card-title>{{game.videogame[0].name}}</mat-card-title>
-                            <div>
-                                <img class="teamImage" src="{{game.opponents[0].opponent.image_url}}">
-                                <img class="teamImage" src="{{game.opponents[1].opponent.image_url}}">
-                            </div>
-                            <span>{{game.opponents[0].opponent.name}} vs. {{game.opponents[1].opponent.name}}</span>
-                        </mat-card>
-                    </div>
+                    {{Match.name}} {{Match.official_stream_url}} <img class="teamImage" src="{{Match.opponents[0].opponent.image_url}}">
                 </div>
-                <!-- THE FOLLOWING IS NOT QUITE WORKING - WILL FIGURE OUT LATER IF NEEDED -->
-                <!-- <div class="match-game-box">
+            </div>
+            <!-- THE FOLLOWING IS NOT QUITE WORKING - WILL FIGURE OUT LATER IF NEEDED -->
+            <!-- <div class="match-game-box">
             <h2>New Games</h2>
             <mat-card class="match-game-entry"></mat-card>
           </div> -->
-            </div>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
