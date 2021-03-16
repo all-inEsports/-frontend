@@ -38,7 +38,7 @@ import { PasswordMatchDirective } from './directives/password-match.directive';
     RegisterComponent,
     LeaderboardComponent,
     HomepageComponent,
-    MatchpageComponent
+    MatchpageComponent,
     PasswordPatternDirective,
     PasswordMatchDirective,
   ],

@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { Component, OnInit, Input } from '@angular/core';
 import { GameDataService } from '../game-data.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
