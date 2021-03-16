@@ -57,7 +57,6 @@
         </div>
         <!-- Write an NG-FOR to populate with available games when linking up -->
         <div class="popular-game-wrapper">
-            <!-- Replace with GAME ICONS AND HREFS to the matches page filtering those games -->
             <div class="popular-game-entry lol" [routerLink]="['/games','lol']"></div>
             <div class="popular-game-entry csgo" [routerLink]="['/games','csgo']"></div>
             <div class="popular-game-entry dota2" [routerLink]="['/games','dota2']"></div>
@@ -66,7 +65,9 @@
         <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
         <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
         <br>
-        <h1 class="match-game-header">Active Matches</h1>
+        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='league-of-legends'">Active Matches - League of Legends</h1>
+        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='cs-go'">Active Matches- Counter-Strike: Global Offensive</h1>
+        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='dota-2'">Active Matches - Dota 2</h1>
         <div class="bottom-container">
             <div class="match-game-container">
                 <div class="match-game-box">

@@ -58,6 +58,21 @@ h1 {
     border-radius: 10px;
 }
 
+.lol {
+    background-image: url("../../assets/league-of-legends.jpg");
+    background-size: cover;
+}
+
+.csgo {
+    background-image: url("../../assets/csgo.jpg");
+    background-size: cover;
+}
+
+.dota2 {
+    background-image: url("../../assets/dota2.jpg");
+    background-size: cover;
+}
+
 .active-matches-wrapper {
     max-height: 120px;
     border: 1px solid #ddd;

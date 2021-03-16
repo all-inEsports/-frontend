@@ -27,6 +27,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatchpageComponent } from './matchpage/matchpage.component';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
 import { PasswordMatchDirective } from './directives/password-match.directive';
+import { GamespageComponent } from './gamespage/gamespage.component';
 
 
 
@@ -41,6 +42,7 @@ import { PasswordMatchDirective } from './directives/password-match.directive';
     MatchpageComponent,
     PasswordPatternDirective,
     PasswordMatchDirective,
+    GamespageComponent,
   ],
   imports: [
     BrowserModule,

@@ -57,17 +57,9 @@
         </div>
         <!-- Write an NG-FOR to populate with available games when linking up -->
         <div class="popular-game-wrapper">
-            <!-- Replace with GAME ICONS AND HREFS to the matches page filtering those games -->
-            <div class="popular-game-entry">League of Legends</div>
-            <div class="popular-game-entry">DOTA2</div>
-            <div class="popular-game-entry">CS:GO</div>
-            <div class="popular-game-entry">Fortnite</div>
-            <div class="popular-game-entry">COD: Warzone</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
+            <div class="popular-game-entry lol" [routerLink]="['/games','lol']"></div>
+            <div class="popular-game-entry csgo" [routerLink]="['/games','csgo']"></div>
+            <div class="popular-game-entry dota2" [routerLink]="['/games','dota2']"></div>
         </div>
         <!--  ACTIVE MATCHES  TODO: Write and NG-FOR to populate with current matches -->
         <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
@@ -77,7 +69,8 @@
         <div class="bottom-container">
             <div class="match-game-container">
                 <div class="match-game-box">
-                    {{Match.name}} {{Match.official_stream_url}} <img class="teamImage" src="{{Match.opponents[0].opponent.image_url}}">
+                    {{Match?.name}} {{Match?.official_stream_url}}
+                    <img class="teamImage" src="{{Match.opponents[0].opponent.image_url}}">
                 </div>
             </div>
             <!-- THE FOLLOWING IS NOT QUITE WORKING - WILL FIGURE OUT LATER IF NEEDED -->
