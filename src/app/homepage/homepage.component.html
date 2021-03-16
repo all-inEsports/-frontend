@@ -82,6 +82,8 @@
                             <mat-card-title *ngIf="game.videogame[0].slug=='league-of-legends'">League of Legends</mat-card-title>
                             <mat-card-title *ngIf="game.videogame[0].slug=='cs-go'">Counter-Strike: Global Offensive</mat-card-title>
                             <mat-card-title *ngIf="game.videogame[0].slug=='dota-2'">Dota 2</mat-card-title>
+                        <mat-card class="match-game-entry">
+                            <mat-card-title>{{game.videogame[0].name}}</mat-card-title>
                             <div>
                                 <img class="teamImage" src="{{game.opponents[0].opponent.image_url}}">
                                 <img class="teamImage" src="{{game.opponents[1].opponent.image_url}}">

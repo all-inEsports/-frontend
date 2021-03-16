@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 // COMPONENT IMPORTS
 import { LoginComponent } from './login/login.component';
 
@@ -25,6 +25,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list'; 
 import {MatIconModule} from '@angular/material/icon';
 import { MatchpageComponent } from './matchpage/matchpage.component';
+import { PasswordPatternDirective } from './directives/password-pattern.directive';
+import { PasswordMatchDirective } from './directives/password-match.directive';
+
 
 
 @NgModule({
@@ -36,6 +39,8 @@ import { MatchpageComponent } from './matchpage/matchpage.component';
     LeaderboardComponent,
     HomepageComponent,
     MatchpageComponent
+    PasswordPatternDirective,
+    PasswordMatchDirective,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { MatchpageComponent } from './matchpage/matchpage.component';
     MatCardModule,
     MatToolbarModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     MatSidenavModule,
     MatListModule,
