@@ -14,48 +14,12 @@
         </mat-toolbar>
         <!-- Add Content Here -->
         <!-- HOME PAGE BEGINS HERE -->
-        <div class="explore-popular">
-            <h1>Explore Popular</h1>
-        </div>
-        <!-- Write an NG-FOR to populate with available games when linking up -->
-        <div class="popular-game-wrapper">
-            <!-- Replace with GAME ICONS AND HREFS to the matches page filtering those games -->
-            <div class="popular-game-entry">League of Legends</div>
-            <div class="popular-game-entry">DOTA2</div>
-            <div class="popular-game-entry">CS:GO</div>
-            <div class="popular-game-entry">Fortnite</div>
-            <div class="popular-game-entry">COD: Warzone</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
-            <div class="popular-game-entry">Super Smash Bros. Melee</div>
-        </div>
+        <app-exploregames></app-exploregames>
         <!--  ACTIVE MATCHES  TODO: Write and NG-FOR to populate with current matches -->
         <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
         <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
         <br>
         <h1 class="match-game-header">Active Matches</h1>
-        <div class="bottom-container">
-            <div class="match-game-container">
-                <div class="match-game-box">
-                    <div *ngFor="let game of Games;">
-                        <mat-card class="match-game-entry">
-                            <mat-card-title>{{game.videogame[0].name}}</mat-card-title>
-                            <div>
-                                <img class="teamImage" src="{{game.opponents[0].opponent.image_url}}">
-                                <img class="teamImage" src="{{game.opponents[1].opponent.image_url}}">
-                            </div>
-                            <span>{{game.opponents[0].opponent.name}} vs. {{game.opponents[1].opponent.name}}</span>
-                        </mat-card>
-                    </div>
-                </div>
-                <!-- THE FOLLOWING IS NOT QUITE WORKING - WILL FIGURE OUT LATER IF NEEDED -->
-                <!-- <div class="match-game-box">
-            <h2>New Games</h2>
-            <mat-card class="match-game-entry"></mat-card>
-          </div> -->
-            </div>
-        </div>
+        <app-activematches></app-activematches>
     </mat-sidenav-content>
 </mat-sidenav-container>

@@ -4,17 +4,15 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { User } from '../user.model';
-import { Router, Event, NavigationStart } from '@angular/router';
-import { AuthenticationService } from '../authentication.service';
 
 @Component({
-  selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  selector: 'app-exploregames',
+  templateUrl: './exploregames.component.html',
+  styleUrls: ['./exploregames.component.css']
 })
-export class HomepageComponent implements OnInit {
-
-  public token: any;
+export class ExploregamesComponent implements OnInit {
+  
+  @Input() User!: User;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
