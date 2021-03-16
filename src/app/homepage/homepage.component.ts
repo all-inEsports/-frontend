@@ -4,6 +4,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { User } from '../user.model';
+import { Router, Event, NavigationStart } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-homepage',
@@ -12,7 +14,7 @@ import { User } from '../user.model';
 })
 export class HomepageComponent implements OnInit {
 
-  @Input() User!: User;
+  public token: any;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(

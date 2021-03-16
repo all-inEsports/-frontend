@@ -11,15 +11,15 @@
                 {{errorMSG}}
             </div>
         </div>
-        <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" (ngSubmit)="onSubmit()">
             <mat-form-field >
-            <input id="username-input" matInput placeholder="Username" FormControlName="name">
+            <input id="username-input" matInput placeholder="Username" [(ngModel)]="userName" required [ngModelOptions]="{standalone: true}">
             </mat-form-field>
           
             <mat-form-field >
-                <input id="password-input" matInput type="passwrod" placeholder="Password" FormControlName="password">
+                <input id="password-input" matInput type="passwrod" placeholder="Password" [(ngModel)]="password" required [ngModelOptions]="{standalone: true}">
               </mat-form-field>
-              <button id="login-button" mat-raised-button type="Submit">Login</button>
+              <button id="login-button" mat-raised-button type="Submit" (click)="onSubmit()">Login</button>
           </form>
           <button (click)="redirectToSignUp()">Sign Up</button>
     </mat-card>

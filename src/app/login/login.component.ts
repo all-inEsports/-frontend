@@ -3,6 +3,10 @@ import { FormGroup, FormBuilder, FormsModule} from "@angular/forms";
 import { UserDataService } from "../user-data.service";
 import { Router, CanActivate } from "@angular/router";
 import { AuthenticationService } from "../authentication.service";
+import { User } from '../user.model';
+import { JWT_OPTIONS } from '@auth0/angular-jwt';
+
+
 
 @Component({
   selector: 'app-login',
@@ -10,35 +14,65 @@ import { AuthenticationService } from "../authentication.service";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, CanActivate {
-  x: boolean = true; //temporal variable
+
+  payload: User = {
+    UserName: "DummyUser",
+    Balance: 75000,
+    ProfilePic: "Default.png",
+    IsAdmin: false,
+    _id: 15,
+    _v: 0,
+    Date: new Date(),
+    Email: "dummy@test.com",
+    Password: "Test123456"
+  }
+
+  token: any = (this.payload, "1Sf123GT");
+
+  tempUser!: User;
   errorMSG: string = '';
-  loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private data: UserDataService, private router: Router, private authService: AuthenticationService) { }
+  userName: string = "";
+  password: string = "";
+  constructor(private data: UserDataService, private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      name:"",
-      password:""
-    });
+    this.tempUser = new User();
   }
 
   onSubmit() {
-    const formValue = this.loginForm.value;
-
-    if(formValue.name = ""){
+    console.log(`Data inputed: ${this.userName} + ${this.password}`);
+    console.log("It works.");
+    if(this.userName == ""){
       this.errorMSG = "Invalid UserName.";
-    }else if(formValue.password = ""){
+      console.log("Bad username.");
+    }else if(this.password == ""){
+      console.log("Bad password.");
       this.errorMSG = "Invalid Password."
-    }else if(formValue.name != null && formValue.password != null){
+    }
+    if(this.userName != null && this.password != null){
       
-      if(this.x){//temporal variable
-        //looks up for username in the databse and sees if the password matches.
-        //if it succeeds then redirects to home page passing over user data.
-        //this.canActivate();
-        this.router.navigate(['/home'])
-      }else{
-        this.errorMSG = "Password or Username is incorrect.";
+      //dummy token authentication
+      if(this.userName === this.payload.UserName){
+        if(this.password === this.payload.Password){
+          console.log("It logs in.")
+          localStorage.setItem('access_token', this.token);
+          this.router.navigate(['/home']);
+        }
+        else{
+          console.log("Password dont match..");
+        }
       }
+      else{
+        console.log("Username dont match..");
+      }
+
+      /*this.authService.login(this.tempUser).subscribe(
+        (success) => {
+          // store the returned token in local storage as 'access_token'
+          localStorage.setItem('access_token',success.token);            // redirect to the "vehicles" route
+          this.router.navigate(['/home']);
+        }
+      );*/  
     }
   };
 

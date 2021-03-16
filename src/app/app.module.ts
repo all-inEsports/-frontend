@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 // COMPONENT IMPORTS
 import { LoginComponent } from './login/login.component';
+import { InterceptTokenService } from './intercept-token.service';
 
 // ANGULAR MATERIAL IMPORTS
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -26,6 +27,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
 import { PasswordMatchDirective } from './directives/password-match.directive';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -39,6 +41,7 @@ import { PasswordMatchDirective } from './directives/password-match.directive';
     HomepageComponent,
     PasswordPatternDirective,
     PasswordMatchDirective,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,12 @@ import { PasswordMatchDirective } from './directives/password-match.directive';
     MatListModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptTokenService,
+      multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
