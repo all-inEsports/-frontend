@@ -1,0 +1,11 @@
+<div>
+    <H1>Leaderboard</H1>
+</div>
+<div>
+    <tr *ngFor="let user of users; let i = index">
+        <td>#{{i + 1}}: </td>
+        <td>
+            <p>{{user.UserName}} ----> {{user.Balance}}</p>
+        </td>
+    </tr>
+</div>
