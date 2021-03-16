@@ -4,23 +4,29 @@
 <app-background-video></app-background-video>
 <div fxLayoutAlign="center center" fxFlexFill class="main-login-page-div" (ngSubmitt)="onSubmit()">
     <mat-card fxFlex="30">
-        <section> <h1 class="md-display-3">ALL IN</h1> </section> 
-        <section> <h2 class="md-display-1">E-Sports</h2> </section>
+        <section>
+            <h1 class="md-display-3">ALL IN</h1>
+        </section>
+        <section>
+            <h2 class="md-display-1">E-Sports</h2>
+        </section>
         <div>
             <div *ngIf="errorMSG">
                 {{errorMSG}}
             </div>
         </div>
         <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" (ngSubmit)="onSubmit()">
-            <mat-form-field >
-            <input id="username-input" matInput placeholder="Username" [(ngModel)]="userName" required [ngModelOptions]="{standalone: true}">
+            <mat-form-field>
+                <input id="username-input" matInput placeholder="Username" [(ngModel)]="userName" required [ngModelOptions]="{standalone: true}">
             </mat-form-field>
-          
-            <mat-form-field >
-                <input id="password-input" matInput type="passwrod" placeholder="Password" [(ngModel)]="password" required [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-              <button id="login-button" mat-raised-button type="Submit" (click)="onSubmit()">Login</button>
-          </form>
-          <button (click)="redirectToSignUp()">Sign Up</button>
+
+            <mat-form-field>
+                <input id="password-input" matInput type="password" placeholder="Password" [(ngModel)]="password" required [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <button id="login-button" mat-raised-button type="Submit" (click)="onSubmit()">Login</button>
+        </form>
+        <a class="register-link" (click)="redirectToSignUp()">
+            <p>Don't have an account?</p>
+        </a>
     </mat-card>
 </div>
