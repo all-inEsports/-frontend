@@ -24,6 +24,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list'; 
 import {MatIconModule} from '@angular/material/icon';
+import { MatchpageComponent } from './matchpage/matchpage.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {MatIconModule} from '@angular/material/icon';
     BackgroundVideoComponent,
     RegisterComponent,
     LeaderboardComponent,
-    HomepageComponent
+    HomepageComponent,
+    MatchpageComponent
   ],
   imports: [
     BrowserModule,
