@@ -52,15 +52,7 @@
         </mat-toolbar>
         <!-- Add Content Here -->
         <!-- HOME PAGE BEGINS HERE -->
-        <div class="explore-popular">
-            <h1>Explore Popular</h1>
-        </div>
-        <!-- Write an NG-FOR to populate with available games when linking up -->
-        <div class="popular-game-wrapper">
-            <div class="popular-game-entry lol" [routerLink]="['/games','lol']"></div>
-            <div class="popular-game-entry csgo" [routerLink]="['/games','csgo']"></div>
-            <div class="popular-game-entry dota2" [routerLink]="['/games','dota2']"></div>
-        </div>
+        <app-exploregames></app-exploregames>
         <!--  ACTIVE MATCHES  TODO: Write and NG-FOR to populate with current matches -->
         <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
         <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->

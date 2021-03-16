@@ -28,6 +28,8 @@ import { MatchpageComponent } from './matchpage/matchpage.component';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { GamespageComponent } from './gamespage/gamespage.component';
+import { ExploregamesComponent } from './exploregames/exploregames.component';
+import { ActivematchesComponent } from './activematches/activematches.component';
 
 
 
@@ -43,6 +45,8 @@ import { GamespageComponent } from './gamespage/gamespage.component';
     PasswordPatternDirective,
     PasswordMatchDirective,
     GamespageComponent,
+    ExploregamesComponent,
+    ActivematchesComponent,
   ],
   imports: [
     BrowserModule,

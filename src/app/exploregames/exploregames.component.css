@@ -1,0 +1,46 @@
+.popular-game-wrapper {
+    max-height: 300px;
+    /* border: 1px solid #ddd; */
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.explore-popular,
+.popular-game-wrapper {
+    margin-left: 5%;
+}
+
+h1 {
+    color: rgba(255, 255, 255, .87);
+}
+
+.popular-game-wrapper::-webkit-scrollbar {
+    width: 0;
+}
+
+.popular-game-wrapper .popular-game-entry {
+    min-width: 212px;
+    height: 212px;
+    line-height: 110px;
+    text-align: center;
+    background-color: #2e2e2e;
+    color: rgba(255, 255, 255, .60);
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.lol {
+    background-image: url("../../assets/league-of-legends.jpg");
+    background-size: cover;
+}
+
+.csgo {
+    background-image: url("../../assets/csgo.jpg");
+    background-size: cover;
+}
+
+.dota2 {
+    background-image: url("../../assets/dota2.jpg");
+    background-size: cover;
+}

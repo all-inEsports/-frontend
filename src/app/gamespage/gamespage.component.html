@@ -52,15 +52,7 @@
         </mat-toolbar>
         <!-- Add Content Here -->
         <!-- HOME PAGE BEGINS HERE -->
-        <div class="explore-popular">
-            <h1>Explore Games</h1>
-        </div>
-        <!-- Write an NG-FOR to populate with available games when linking up -->
-        <div class="popular-game-wrapper">
-            <div class="popular-game-entry lol" [routerLink]="['/games','lol']"></div>
-            <div class="popular-game-entry csgo" [routerLink]="['/games','csgo']"></div>
-            <div class="popular-game-entry dota2" [routerLink]="['/games','dota2']"></div>
-        </div>
+        <app-exploregames></app-exploregames>
         <!--  ACTIVE MATCHES  TODO: Write and NG-FOR to populate with current matches -->
         <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
         <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
@@ -68,30 +60,6 @@
         <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='league-of-legends'">Active Matches - League of Legends</h1>
         <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='cs-go'">Active Matches- Counter-Strike: Global Offensive</h1>
         <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='dota-2'">Active Matches - Dota 2</h1>
-        <div class="bottom-container">
-            <div class="match-game-container">
-                <div class="match-game-box">
-                    <div *ngFor="let game of Games;">
-                        <div *ngIf="game.opponents[0]?.opponent?.image_url && game?.opponents[1]?.opponent?.image_url">
-                            <mat-card [routerLink]="['/match',game._id]" class="match-game-entry">
-                                <mat-card-title *ngIf="game?.videogame[0].slug=='league-of-legends'">League of Legends</mat-card-title>
-                                <mat-card-title *ngIf="game?.videogame[0].slug=='cs-go'">Counter-Strike: Global Offensive</mat-card-title>
-                                <mat-card-title *ngIf="game?.videogame[0].slug=='dota-2'">Dota 2</mat-card-title>
-                                <div>
-                                    <img class="teamImage" src="{{game?.opponents[0]?.opponent?.image_url}}">
-                                    <img class="teamImage" src="{{game?.opponents[1]?.opponent?.image_url}}">
-                                </div>
-                                <span>{{game?.opponents[0]?.opponent?.name}} vs. {{game?.opponents[1]?.opponent?.name}}</span>
-                            </mat-card>
-                        </div>
-                    </div>
-                </div>
-                <!-- THE FOLLOWING IS NOT QUITE WORKING - WILL FIGURE OUT LATER IF NEEDED -->
-                <!-- <div class="match-game-box">
-            <h2>New Games</h2>
-            <mat-card class="match-game-entry"></mat-card>
-          </div> -->
-            </div>
-        </div>
+        <app-activematches></app-activematches>
     </mat-sidenav-content>
 </mat-sidenav-container>
