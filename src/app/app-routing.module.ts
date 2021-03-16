@@ -14,8 +14,8 @@ const routes: Routes = [
   {path:'leaderboard', component:LeaderboardComponent, canActivate: [AuthGuard]},
   {path:'register', component: RegisterComponent},
   {path:'home', component: HomepageComponent, canActivate: [AuthGuard]},
-  {path:'match/:id', component: MatchpageComponent},
-  {path:'games/:id', component: GamespageComponent},
+  {path:'match/:id', component: MatchpageComponent, canActivate: [AuthGuard]},
+  {path:'games/:id', component: GamespageComponent, canActivate: [AuthGuard]},
   {path:'**', component:LoginComponent}
 ];
 
