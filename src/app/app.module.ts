@@ -24,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './homepage/homepage.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list'; 
+import { MatGridListModule} from '@angular/material/grid-list'
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatchpageComponent } from './matchpage/matchpage.component';
@@ -68,6 +69,7 @@ import { ActivematchesComponent } from './activematches/activematches.component'
     ReactiveFormsModule,
     MatSidenavModule,
     MatListModule,
+    MatGridListModule,
     MatIconModule,
     MatCheckboxModule,
   ],

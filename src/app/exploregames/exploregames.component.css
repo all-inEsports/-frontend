@@ -4,15 +4,29 @@
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
+    justify-content: center;
 }
 
-.explore-popular,
-.popular-game-wrapper {
-    margin-left: 5%;
+.bottom-container {
+    opacity: 99%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: rgba(18, 18, 18, 0.9);
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    max-width: 1000px;
+    padding-bottom: 20px;
+    padding-top: 10px;
 }
 
-h1 {
-    color: rgba(255, 255, 255, .87);
+.explore-popular {
+    opacity: 99.9%;
+    margin-left: 20px;
+    filter: drop-shadow(0 5px 3px black);
+    color: rgba(255, 255, 255, 1);
+    font-size: 30px;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .popular-game-wrapper::-webkit-scrollbar {
@@ -28,6 +42,7 @@ h1 {
     color: rgba(255, 255, 255, .60);
     margin-right: 10px;
     border-radius: 10px;
+    outline: none;
 }
 
 .lol {

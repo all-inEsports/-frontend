@@ -6,37 +6,34 @@
     <h1 *ngIf="token">{{token.Username}}</h1>
     <h1 *ngIf="!(token)">Username</h1>
 </div>
+<div style="text-align: center;">
+    <button class="homepage-button" mat-raised-button type="Submit" (click)="home()">Home</button>
+    <button class="logout-button " mat-raised-button type="Submit" (click)="logout()">Logout</button>
+</div>
 
 
-<mat-nav-list class="user-personal-information-list">
-    <mat-list-item>
-        <div class="personal">
-            <h3>Personal</h3>
-        </div>
-        <div>
-            <button (click)="logout()">Logout</button>
-        </div>
-    </mat-list-item>
+<mat-nav-list class="user-personal-information-list ">
+    <div class="personal">
+        <h3>Personal</h3>
+    </div>
     <!-- THESE TWO SHOULD BE REPLACED WITH THE USER'S RANKING AND BALANCE -->
-    <mat-card mat-list-item class="user-stats" *ngIf="token">{{token.Balance}}</mat-card>
-    <mat-card mat-list-item class="user-stats" *ngIf="!(token)">Theres no balance</mat-card>
-    <mat-card mat-list-item class="user-stats">Player Ranking Goes Here</mat-card>
+    <mat-card mat-list-item class="user-stats " *ngIf="token ">{{token.Balance}}</mat-card>
+    <mat-card mat-list-item class="user-stats " *ngIf="!(token) ">Theres no balance</mat-card>
+    <mat-card mat-list-item class="user-stats ">Player Ranking Goes Here</mat-card>
 </mat-nav-list>
 
-<div class="user-personal-list-div">
-    <mat-nav-list class="user-active-bets-list">
-        <mat-list-item>
-            <div class="user-active-bets">
-                <h3>Active Bets</h3>
-            </div>
-        </mat-list-item>
+<div class="user-personal-list-div ">
+    <mat-nav-list class="user-active-bets-list ">
+        <div class="user-active-bets">
+            <h3>Active Bets</h3>
+        </div>
         <!-- NG FOR SHOULD GO HERE TO LOOP THROUGH BETS THE USER CURRENTLY HAS OPEN  -->
-        <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-        <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-        <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-        <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-        <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-        <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
+        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
+        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
+        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
+        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
+        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
+        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
         <!-- END OF HARDCODED SAMPLE -->
     </mat-nav-list>
 </div>
