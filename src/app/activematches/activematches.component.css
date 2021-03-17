@@ -20,11 +20,15 @@
     grid-gap: 20px;
 }
 
+.team-logos {
+    margin: auto;
+    margin-right: 65%;
+    float: left;
+}
+
 ::-webkit-scrollbar {
     background: transparent;
     overflow: visible;
-    max-width: 50px;
-    max-height: 50px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -43,16 +47,58 @@
 }
 
 .match-game-entry {
+    height: 150px;
     margin-bottom: 10px;
-    background-color: #2E2E2E;
+    margin-right: 10px;
+    background-color: #25262c;
     color: white;
     text-align: center;
-    max-height: 124px;
-    margin-right: 10px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
 }
 
-.teamImage {
-    width: 50px;
-    height: auto;
-    padding: 10px
+.teamImage1 {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-left: 10%;
+}
+
+.teamImage2 {
+    float: right;
+    width: 100px;
+    height: 100px;
+    margin-right: 10%;
+}
+
+.number-of-games,
+.game-date,
+.team-name-container {
+    padding-bottom: 15px;
+    color: rgba(255, 255, 255, .60)
+}
+
+.game-title-container,
+.team-names {
+    color: rgba(255, 255, 255, .87);
+    font-size: 20px;
+    margin: auto;
+}
+
+.team-name-container {
+    color: rgba(255, 255, 255, .87);
+    text-align: center;
+}
+
+.game-title {
+    margin: auto;
+    font-size: 12pt;
+    color: rgba(255, 255, 255, .37);
 }

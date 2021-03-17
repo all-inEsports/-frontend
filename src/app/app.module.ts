@@ -34,6 +34,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { GamespageComponent } from './gamespage/gamespage.component';
 import { ExploregamesComponent } from './exploregames/exploregames.component';
 import { ActivematchesComponent } from './activematches/activematches.component';
+import { MatRippleModule } from '@angular/material/core';
 
 
 
@@ -72,6 +73,7 @@ import { ActivematchesComponent } from './activematches/activematches.component'
     MatGridListModule,
     MatIconModule,
     MatCheckboxModule,
+    MatRippleModule,
   ],
   providers: [
     {

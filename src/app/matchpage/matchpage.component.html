@@ -18,17 +18,16 @@
         </span>
         </mat-toolbar>
         <app-exploregames></app-exploregames>
-        <br>
-        <h1 class="match-game-header">Current Match</h1>
+        <h1 class="match-game-header">CURRENT MATCH</h1>
         <div class="bottom-container">
             <div class="match-game-box">
                 <mat-card class="match-game-entry">
-                    <img class="teamImage" src="{{Match.opponents[0].opponent.image_url}}">
-                    <img class="teamImage" src="{{Match.opponents[1].opponent.image_url}}">
+                    <img class="teamImage" src="{{Game?.opponents[0]?.opponent?.image_url}}">
+                    <img class="teamImage" src="{{Game?.opponents[1]?.opponent?.image_url}}">
                     <div>
-                        {{Match?.name}}
+                        {{Game?.name}}
                     </div>
-                    <div>{{Match?.official_stream_url}}</div>
+                    <div>{{Game?.official_stream_url}}</div>
                 </mat-card>
             </div>
 

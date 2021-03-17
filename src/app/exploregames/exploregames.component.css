@@ -14,9 +14,9 @@
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 10px;
-    max-width: 1000px;
+    max-width: 750px;
     padding-bottom: 20px;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .explore-popular {
@@ -33,16 +33,18 @@
     width: 0;
 }
 
-.popular-game-wrapper .popular-game-entry {
+.popular-game-entry {
     min-width: 212px;
     height: 212px;
     line-height: 110px;
     text-align: center;
     background-color: #2e2e2e;
     color: rgba(255, 255, 255, .60);
-    margin-right: 10px;
+    margin-right: 25px;
     border-radius: 10px;
     outline: none;
+    filter: drop-shadow(0 5px 5px black);
+    cursor: pointer;
 }
 
 .lol {

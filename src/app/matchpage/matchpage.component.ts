@@ -19,7 +19,7 @@ export class MatchpageComponent implements OnInit {
     shareReplay()
   );
 
-  Match!: Match;
+  Game!: any;
   querySub:any;
 
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {
@@ -28,7 +28,7 @@ export class MatchpageComponent implements OnInit {
   ngOnInit(): void {
     this.querySub = this.route.params.subscribe(params=>{
       this.service.getGameById(params['id']).subscribe(data=>{
-        this.Match = data;
+        this.Game = data;
       });
     })
     
