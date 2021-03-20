@@ -24,6 +24,7 @@
         <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
         <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
         <br>
+        <h1 class="match-game-header" *ngIf="!Games[0]?.videogame[0].slug">EXPLORE</h1>
         <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='league-of-legends'">EXPLORE LEAGUE OF LEGENDS</h1>
         <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='cs-go'">EXPLORE COUNTER-STRIKE: GLOBAL OFFENSIVE</h1>
         <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='dota-2'">EXPLORE DOTA 2</h1>
