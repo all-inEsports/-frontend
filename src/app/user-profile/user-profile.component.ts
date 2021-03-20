@@ -24,9 +24,12 @@ export class UserProfileComponent implements OnInit {
   public home(){
     this.router.navigate(['/home']);
   }
+  public leaderboard(){
+    this.router.navigate(['/leaderboard']);
+  }
   public logout(){
     this.auth.logout();
     this.router.navigate(['/']);
   }
-
+  
 }
