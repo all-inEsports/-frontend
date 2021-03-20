@@ -27,6 +27,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule} from '@angular/material/grid-list'
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatchpageComponent } from './matchpage/matchpage.component';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
 import { PasswordMatchDirective } from './directives/password-match.directive';
@@ -74,6 +75,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatIconModule,
     MatCheckboxModule,
     MatRippleModule,
+    MatButtonToggleModule,
   ],
   providers: [
     {

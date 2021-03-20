@@ -5,7 +5,7 @@ import { Match } from './Match';
 import { GAME_API } from './api.constants';
 import { games }from './games.constants';
 
-const perPage = 10;
+const perPage = Number.MAX_SAFE_INTEGER;
 
 
 @Injectable({

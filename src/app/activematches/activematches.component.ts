@@ -11,7 +11,7 @@ import { User } from '../user.model';
   templateUrl: './activematches.component.html',
   styleUrls: ['./activematches.component.css']
 })
-export class ActivematchesComponent implements OnInit {
+export class ActivematchesComponent implements OnInit{
   @Input() User!: User;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -22,8 +22,12 @@ export class ActivematchesComponent implements OnInit {
 
   Games: Array<any>;
   querySub:any;
+  currentDate = new Date();
+  gameDate = new Date();
+  dateTimeStamp!: Number;
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {
     this.Games = [];
+    console.log(this.currentDate)
   }
 
   ngOnInit(): void {
@@ -38,5 +42,10 @@ export class ActivematchesComponent implements OnInit {
       this.Games = games_
     );
     }
+  }
+  getDate(date:any){
+    this.gameDate = new Date(date)
+    this.dateTimeStamp = this.gameDate.getTime();
+    return this.dateTimeStamp
   }
 }

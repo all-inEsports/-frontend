@@ -148,17 +148,64 @@ h1 {
 }
 
 .match-game-entry {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    background-color: #2E2E2E;
+    height: 27rem;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #25262c;
     color: white;
     text-align: center;
+}
+
+.game-title {
+    margin: auto;
+    font-size: 20pt;
+    color: rgba(255, 255, 255, .37);
 }
 
 .teamImage {
     width: 50px;
     height: auto;
     padding: 10px
+}
+
+.main-content {
+    padding-top: 1rem;
+    margin: auto;
+    font-size: 20pt;
+    color: rgba(255, 255, 255, .37);
+}
+
+.choiceButton {
+    background-color: #1e1f24;
+}
+
+.mat-form-field-underline {
+    background-color: #121212 !important;
+}
+
+.teamChoiceGroup {
+    padding: 10px;
+}
+
+.mat-button-toggle-checked {
+    background-color: rgba(26, 26, 26, 0.9);
+}
+
+.mat-button-toggle {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.submitButton {
+    background-color: #121212;
+}
+
+.submitButton:disabled {
+    color: rgba(255, 255, 255, .37);
+}
+
+.mat-button-toggle-group {
+    border: 0px;
 }
 
 .explore-popular,
@@ -189,4 +236,40 @@ h1 {
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 10px;
+}
+
+.teamImage1 {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-left: 10%;
+}
+
+.teamImage2 {
+    float: right;
+    width: 100px;
+    height: 100px;
+    margin-right: 10%;
+}
+
+.teamImage {
+    width: 100px;
+    height: 100px;
+}
+
+.number-of-games,
+.game-date,
+.team-name-container {
+    color: rgba(255, 255, 255, .60)
+}
+
+.game-date {
+    padding-top: 35px;
+}
+
+.game-title-container,
+.team-names {
+    color: rgba(255, 255, 255, .87);
+    font-size: 20px;
+    margin: auto;
 }

@@ -21,7 +21,9 @@ export class MatchpageComponent implements OnInit {
 
   Game!: any;
   querySub:any;
-
+  teamChoice!: string;
+  bettingAmount!: Number;
+  
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {
   }
 
@@ -31,6 +33,9 @@ export class MatchpageComponent implements OnInit {
         this.Game = data;
       });
     })
-    
+  }
+  onSubmit(): void{
+    console.log(this.teamChoice)
+    console.log(this.bettingAmount)
   }
 }
