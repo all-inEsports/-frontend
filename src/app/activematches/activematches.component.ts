@@ -27,7 +27,6 @@ export class ActivematchesComponent implements OnInit{
   dateTimeStamp!: Number;
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {
     this.Games = [];
-    console.log(this.currentDate)
   }
 
   ngOnInit(): void {

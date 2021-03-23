@@ -36,6 +36,7 @@ import { GamespageComponent } from './gamespage/gamespage.component';
 import { ExploregamesComponent } from './exploregames/exploregames.component';
 import { ActivematchesComponent } from './activematches/activematches.component';
 import { MatRippleModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -76,6 +77,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatCheckboxModule,
     MatRippleModule,
     MatButtonToggleModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
