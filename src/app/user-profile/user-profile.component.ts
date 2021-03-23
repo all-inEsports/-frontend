@@ -1,3 +1,4 @@
+import { ReadVarExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationStart } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
@@ -24,6 +25,9 @@ export class UserProfileComponent implements OnInit {
   public logout(){
     this.auth.logout();
     this.router.navigate(['/']);
+  }
+
+  selectImage(event: any){
   }
 
 }

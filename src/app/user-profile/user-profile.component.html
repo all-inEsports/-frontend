@@ -1,6 +1,9 @@
 <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
     <img src="../../assets/tempImage/big-esports-event.jpg" alt="" style="height: 150px; width: 150px; border-radius: 50%;">
 </div>
+<div>
+    <input type="file" (change)="selectImage($event)">
+</div>
 <!-- CHANGE TO THE USER'S SELECTED USERNAME FOR LINKUP -->
 <div class="username">
     <h1 *ngIf="token">{{token.Username}}</h1>

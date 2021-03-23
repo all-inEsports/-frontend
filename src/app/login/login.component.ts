@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit, CanActivate {
     if(this.userName != null && this.password != null){
       
       //dummy token authentication
-      if(this.userName === this.payload.UserName){
+      /*if(this.userName === this.payload.UserName){
         if(this.password === this.payload.Password){
           console.log("It logs in.")
           localStorage.setItem('access_token', this.token);
@@ -64,15 +64,18 @@ export class LoginComponent implements OnInit, CanActivate {
       }
       else{
         console.log("Username dont match..");
-      }
+      }*/
 
-      /*this.authService.login(this.tempUser).subscribe(
+      this.authService.login(this.tempUser).subscribe(
         (success) => {
           // store the returned token in local storage as 'access_token'
           localStorage.setItem('access_token',success.token);            // redirect to the "vehicles" route
           this.router.navigate(['/home']);
         }
-      );*/  
+      ),
+      (err: any)=>{
+        console.log(err);
+      };
     }
   };
 
