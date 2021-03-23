@@ -37,7 +37,7 @@ import { ExploregamesComponent } from './exploregames/exploregames.component';
 import { ActivematchesComponent } from './activematches/activematches.component';
 import { MatRippleModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -78,6 +78,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatRippleModule,
     MatButtonToggleModule,
     MatProgressSpinnerModule,
+    Ng2SearchPipeModule,
   ],
   providers: [
     {

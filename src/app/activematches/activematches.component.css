@@ -5,11 +5,29 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 55%;
+    height: 525px;
     background: rgba(18, 18, 18, 0.9);
     margin-left: 10px;
     margin-right: 10px;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.searchBox {
+    opacity: 99%;
+    margin-left: 10px;
+    display: flex;
+    background: rgba(18, 18, 18, 0.9);
+    margin-left: 10px;
+    margin-right: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.full-width {
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .match-game-container {

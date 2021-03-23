@@ -25,6 +25,8 @@ export class ActivematchesComponent implements OnInit{
   currentDate = new Date();
   gameDate = new Date();
   dateTimeStamp!: Number;
+  searchText!: string;
+  
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {
     this.Games = [];
   }
