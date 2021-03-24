@@ -15,7 +15,7 @@ import { JWT_OPTIONS } from '@auth0/angular-jwt';
 })
 export class LoginComponent implements OnInit, CanActivate {
 
-  payload: User = {
+ /* payload: User = {
     UserName: "DummyUser",
     Balance: 75000,
     ProfilePic: "Default.png",
@@ -29,14 +29,14 @@ export class LoginComponent implements OnInit, CanActivate {
 
   token: any = (this.payload, "1Sf123GT");
 
-  tempUser!: User;
+  tempUser!: User;*/
   errorMSG: string = '';
   userName: string = "";
   password: string = "";
   constructor(private data: UserDataService, private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.tempUser = new User();
+   // this.tempUser = new User();
   }
 
   onSubmit() {
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit, CanActivate {
     }
     if(this.userName != null && this.password != null){
       
-      //dummy token authentication
+     /* //dummy token authentication
       if(this.userName === this.payload.UserName){
         if(this.password === this.payload.Password){
           console.log("It logs in.")
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit, CanActivate {
       }
       else{
         console.log("Username dont match..");
-      }
+      }*/
 
       /*this.authService.login(this.tempUser).subscribe(
         (success) => {
@@ -73,6 +73,15 @@ export class LoginComponent implements OnInit, CanActivate {
           this.router.navigate(['/home']);
         }
       );*/  
+      this.authService.login(this.userName,this.password).subscribe((obj)=>{
+        if(obj.token){
+          console.log(obj.message);
+          localStorage.setItem('access_token', obj.token);
+          this.router.navigate(['/home']);
+        }
+        this.errorMSG = obj.message;
+        
+      })
     }
   };
 
