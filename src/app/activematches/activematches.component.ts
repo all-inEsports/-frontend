@@ -32,7 +32,7 @@ export class ActivematchesComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    if(this.route.params){
+    if(this.route.snapshot.params.id){
       this.querySub = this.route.params.subscribe(params=>{
         this.service.getGamesByGenre(params['id']).subscribe(data=>{
           this.Games = data;
