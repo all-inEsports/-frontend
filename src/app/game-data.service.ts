@@ -5,7 +5,6 @@ import { Match } from './Match';
 import { GAME_API } from './api.constants';
 import { games }from './games.constants';
 
-const perPage = Number.MAX_SAFE_INTEGER;
 
 
 @Injectable({
@@ -22,9 +21,9 @@ export class GameDataService {
     return this.http.get<any[]>(`https://gamedataservice.herokuapp.com/ps/games/${id}`);
   }
   getAllGames():Observable<any[]>{
-    return this.http.get<any[]>(`${GAME_API}/ps/games?page=1&perPage=${perPage}`);
+    return this.http.get<any[]>(`${GAME_API}/ps/games?page=1&perPage=10`);
   }
   getGamesByGenre(id:string):Observable<any[]>{
-    return this.http.get<any[]>(`${GAME_API}/ps/games?game=${id}&page=1&perPage=${perPage}`);
+    return this.http.get<any[]>(`${GAME_API}/ps/games?game=${id}&page=1&perPage=10`);
   }
 }
