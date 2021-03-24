@@ -5,6 +5,8 @@ import { Router, CanActivate } from "@angular/router";
 import { AuthenticationService } from "../authentication.service";
 import { User } from '../user.model';
 import { JWT_OPTIONS } from '@auth0/angular-jwt';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 
 
@@ -58,14 +60,15 @@ export class LoginComponent implements OnInit, CanActivate {
           this.router.navigate(['/home']);
         }
       );*/  
-      this.authService.login(this.userName,this.password).subscribe((obj)=>{
-        if(obj.token){
-          console.log(obj.message);
-          localStorage.setItem('access_token', obj.token);
-          this.router.navigate(['/home']);
-        }
-        this.errorMSG = obj.message;
-        
+      this.authService.login(this.userName,this.password).pipe(catchError(err => of([]))).subscribe(err =>{
+        console.log("Http error: " + err);
+        this.errorMSG = "Username or Password do not exist.";
+      },(obj)=>{
+          if(obj.token){
+            console.log(obj.message);
+            localStorage.setItem('access_token', obj.token);
+            this.router.navigate(['/home']);
+          }
       })
     }
   };
