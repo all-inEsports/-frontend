@@ -11,11 +11,11 @@
         <section>
             <h2 class="md-display-1">E-Sports</h2>
         </section>
-        <div>
-            <div *ngIf="errorMSG">
+        <section>
+            <div *ngIf="errorMSG" class="Error">
                 {{errorMSG}}
             </div>
-        </div>
+        </section>
         <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" (ngSubmit)="onSubmit()">
             <mat-form-field>
                 <input id="username-input" matInput placeholder="Username" [(ngModel)]="userName" required [ngModelOptions]="{standalone: true}">
