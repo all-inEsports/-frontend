@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormsModule} from "@angular/forms";
+import { FormGroup, FormBuilder, FormsModule, NgForm} from "@angular/forms";
 import { UserDataService } from "../user-data.service";
 import { Router, CanActivate } from "@angular/router";
 import { AuthenticationService } from "../authentication.service";
@@ -16,7 +16,7 @@ import { JWT_OPTIONS } from '@auth0/angular-jwt';
 export class LoginComponent implements OnInit, CanActivate {
 
   payload: User = {
-    UserName: "DummyUser",
+    UserName: "",
     Balance: 75000,
     ProfilePic: "Default.png",
     IsAdmin: false,
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit, CanActivate {
     _v: 0,
     Date: new Date(),
     Email: "dummy@test.com",
-    Password: "Test123456"
+    Password: ""
   }
 
   token: any = (this.payload, "1Sf123GT");
@@ -39,37 +39,22 @@ export class LoginComponent implements OnInit, CanActivate {
     this.tempUser = new User();
   }
 
-  onSubmit() {
-    console.log(`Data inputed: ${this.userName} + ${this.password}`);
-    console.log("It works.");
-    if(this.userName == ""){
+  onSubmit(loginForm: NgForm) {
+    if(this.payload.UserName == ""){
       this.errorMSG = "Invalid UserName.";
       console.log("Bad username.");
-    }else if(this.password == ""){
+    }else if(this.payload.Password == ""){
       console.log("Bad password.");
       this.errorMSG = "Invalid Password."
     }
-    if(this.userName != null && this.password != null){
-      
-      //dummy token authentication
-      /*if(this.userName === this.payload.UserName){
-        if(this.password === this.payload.Password){
-          console.log("It logs in.")
-          localStorage.setItem('access_token', this.token);
-          this.router.navigate(['/home']);
-        }
-        else{
-          console.log("Password dont match..");
-        }
-      }
-      else{
-        console.log("Username dont match..");
-      }*/
+    if(this.payload.UserName != null && this.payload.Password != null){
 
-      this.authService.login(this.tempUser).subscribe(
+      console.log('Payload Name: '+this.payload.UserName);
+      console.log('Payload pword: '+this.payload.Password);
+
+      this.authService.login(this.payload).subscribe(
         (success) => {
-          // store the returned token in local storage as 'access_token'
-          localStorage.setItem('access_token',success.token);            // redirect to the "vehicles" route
+          localStorage.setItem('access_token',success.token);   
           this.router.navigate(['/home']);
         }
       ),

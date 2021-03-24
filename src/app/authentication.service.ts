@@ -41,7 +41,7 @@ export class AuthenticationService {
 
   login(user: User): Observable<any> {
     // Attempt to login
-    return this.http.post<any>(`${USER_API}/v1/login`, user);
+    return this.http.post<any>(`http://localhost:3000/v1/login`, user);
   }
 
   public logout() {
