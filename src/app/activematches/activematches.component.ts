@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { GameDataService } from '../game-data.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -26,17 +26,18 @@ export class ActivematchesComponent implements OnInit{
   gameDate = new Date();
   dateTimeStamp!: Number;
   searchText!: string;
-  
+
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {
     this.Games = [];
   }
 
   ngOnInit(): void {
-    if(this.route.snapshot.params.id){
+    if(this.route.params){
       this.querySub = this.route.params.subscribe(params=>{
         this.service.getGamesByGenre(params['id']).subscribe(data=>{
           this.Games = data;
         });
+        this.Games=[];
       })
     }else{
     this.service.getAllGames().subscribe(games_ =>
