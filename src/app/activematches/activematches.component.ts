@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { GameDataService } from '../game-data.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { User } from '../user.model';
   templateUrl: './activematches.component.html',
   styleUrls: ['./activematches.component.css']
 })
-export class ActivematchesComponent implements OnInit {
+export class ActivematchesComponent implements OnInit{
   @Input() User!: User;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -22,21 +22,32 @@ export class ActivematchesComponent implements OnInit {
 
   Games: Array<any>;
   querySub:any;
+  currentDate = new Date();
+  gameDate = new Date();
+  dateTimeStamp!: Number;
+  searchText!: string;
+
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {
     this.Games = [];
   }
 
   ngOnInit(): void {
-    if(this.route.snapshot.params.id){
+    if(this.route.params){
       this.querySub = this.route.params.subscribe(params=>{
         this.service.getGamesByGenre(params['id']).subscribe(data=>{
           this.Games = data;
         });
+        this.Games=[];
       })
     }else{
     this.service.getAllGames().subscribe(games_ =>
       this.Games = games_
     );
     }
+  }
+  getDate(date:any){
+    this.gameDate = new Date(date)
+    this.dateTimeStamp = this.gameDate.getTime();
+    return this.dateTimeStamp
   }
 }

@@ -1,28 +1,63 @@
 .bottom-container {
-    background-color: #121212;
+    opacity: 99%;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #121212;
     position: relative;
-    height: 55%;
-    overflow-y: auto;
+    height: 525px;
+    background: rgba(18, 18, 18, 0.9);
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.searchBox {
+    opacity: 99%;
+    margin-left: 10px;
+    display: flex;
+    background: rgba(18, 18, 18, 0.9);
+    margin-left: 10px;
+    margin-right: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.full-width {
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .match-game-container {
-    background-color: #121212;
     width: 90%;
     display: grid;
+    overflow-y: scroll;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 20px;
+}
+
+.team-logos {
+    margin: auto;
+    margin-right: 65%;
+    float: left;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+    overflow: visible;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
 }
 
 .match-game-box {
     height: 500px;
     color: white;
     position: relative;
-    overflow-y: auto;
 }
 
 .match-game-box::-webkit-scrollbar {
@@ -30,15 +65,67 @@
 }
 
 .match-game-entry {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    background-color: #2E2E2E;
+    height: 150px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #25262c;
     color: white;
+    text-align: center;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+}
+
+.teamImage1 {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-left: 10%;
+}
+
+.teamImage2 {
+    float: right;
+    width: 100px;
+    height: 100px;
+    margin-right: 10%;
+}
+
+.number-of-games,
+.game-date,
+.team-name-container {
+    padding-bottom: 15px;
+    color: rgba(255, 255, 255, .60)
+}
+
+.team-name-container {
+    font-size: 24px;
+}
+
+.mat-progress-spinner {
+    display: unset !important;
+    position: unset !important;
+}
+
+.game-title-container,
+.team-names {
+    color: rgba(255, 255, 255, .87);
+    font-size: 20px;
+    margin: auto;
+}
+
+.team-name-container {
+    color: rgba(255, 255, 255, .87);
     text-align: center;
 }
 
-.teamImage {
-    width: 50px;
-    height: auto;
-    padding: 10px
+.game-title {
+    margin: auto;
+    font-size: 12pt;
+    color: rgba(255, 255, 255, .37);
 }

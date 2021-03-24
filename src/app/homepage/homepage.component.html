@@ -1,17 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-       <app-user-profile></app-user-profile>
-       </mat-sidenav>
-    <mat-sidenav-content>
-        <mat-toolbar class="toolbar">
-            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-            <!-- SEARCH BAR ON TOP -->
-            <span>
-          <!-- <mat-icon aria-hidden="false" aria-label="search bar icon">search</mat-icon> -->
-        </span>
-        </mat-toolbar>
+        <app-user-profile></app-user-profile>
+    </mat-sidenav>
+    <mat-sidenav-content style="opacity: 90%; margin-top:10px">
+        <video id="my-video" muted loop autoplay oncanplay="this.muted=true" oncanplay="this.play()" onloadedmetadata="this.muted=true">
+        <source src="../../assets/video-temporary/lallin.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
         <!-- Add Content Here -->
         <!-- HOME PAGE BEGINS HERE -->
         <app-exploregames></app-exploregames>
@@ -19,7 +14,7 @@
         <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
         <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
         <br>
-        <h1 class="match-game-header">Active Matches</h1>
+        <h1 class="match-game-header">ACTIVE MATCHES</h1>
         <app-activematches></app-activematches>
     </mat-sidenav-content>
 </mat-sidenav-container>

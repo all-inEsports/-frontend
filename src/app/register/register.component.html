@@ -1,6 +1,60 @@
+<div class="register-video">
+    <app-background-video></app-background-video>
+</div>
+<div fxLayoutAlign="center center" fxFlexFill class="register-page-div" (ngSubmitt)="onSubmit()">
+    <mat-card class="register-card" style="background-size: cover;">
+        <br><br>
+        <section>
+            <h1 class="md-display-1">Register</h1>
+        </section>
+        <div>
+            <div *ngIf="errorMSG">
+                {{errorMSG}}
+            </div>
+        </div>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="register-form" (ngSubmit)="onSubmit()" #registerForm="ngForm" [appPasswordMatch]="['password','password2']">
+            <mat-form-field>
+                <input matInput type="text" name="userName" id="userName" placeholder="Username" [(ngModel)]="userName" required #username="ngModel" minlength="3" FormControlName="name">
+                <br>
+                <small *ngIf="username.touched && !username.valid">Imvalid Username.</small>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" name="password" id="password" placeholder="Password" [(ngModel)]="password" required #pWord="ngModel" appPasswordPattern>
+                <br>
+                <small *ngIf="pWord.touched && (pWord.errors?.invalidPassword || !pWord.valid)">Must be a minimum of 8 characters, with at least one uppercase, lowercase and digit.</small>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" name="password2" id="password2" placeholder="Confirm Password" [(ngModel)]="password2" required #pWord2="ngModel">
+                <br>
+                <small *ngIf="pWord2.touched && !pWord2.valid">Password Confirmation does not match password.</small>
+                <br>
+                <small *ngIf="pWord2.touched && pWord2.errors?.passwordMissmatch">Password Confirmation does not match password.</small>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="email" name="email" id="email" placeholder="Email" [(ngModel)]="email" required #eMail="ngModel" email>
+                <br>
+                <small *ngIf="eMail.touched && !eMail.valid">Enter email address.</small>
+            </mat-form-field>
+            <section>
+                <mat-checkbox name="age" required [(ngModel)]="age">By checking this box you confirm that you are 13 years old or older.</mat-checkbox>
+                <br>
+                <small *ngIf="errorMSG">{{errorMSG}}</small>
+            </section>
+            <section>
+                <mat-checkbox name="termsAndConditions" required [(ngModel)]="termsAndConditions">By checking this box you confirm to agree to our Terms and Conditions.</mat-checkbox>
+                <br>
+                <small *ngIf="errorMSG">{{errorMSG}}</small>
+            </section>
+            <br>
+            <button mat-raised-button id="register" type="submit" [disabled]="!registerForm.valid">Register</button>
+        </form>
+    </mat-card>
+</div>
 
 
-<form (ngSubmit)="onSubmit()" #registerForm="ngForm" [appPasswordMatch]="['password','password2']">
+
+<!-- COMMENTED OUT ORIGINAL FORM JUST IN CASE REVERSIONS NEED TO BE MADEIN THE FUTURE -->
+<!-- <form (ngSubmit)="onSubmit()" #registerForm="ngForm" [appPasswordMatch]="['password','password2']">
     <input type="text" name="userName" id="userName" placeholder="Enter Username" [(ngModel)]="userName" required #username="ngModel" minlength="3">
     <br>
     <small *ngIf="username.touched && !username.valid">Imvalid Username.</small>
@@ -31,5 +85,4 @@
     <small *ngIf="errorMSG">{{errorMSG}}</small>
     <br><br>
     <button type="submit" [disabled]="!registerForm.valid">Register</button>
-
-</form>
+</form> -->

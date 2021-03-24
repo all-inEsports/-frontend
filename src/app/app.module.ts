@@ -22,9 +22,12 @@ import { RegisterComponent } from './register/register.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './homepage/homepage.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list'; 
-import {MatIconModule} from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list'; 
+import { MatGridListModule} from '@angular/material/grid-list'
+import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatchpageComponent } from './matchpage/matchpage.component';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
 import { PasswordMatchDirective } from './directives/password-match.directive';
@@ -32,7 +35,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { GamespageComponent } from './gamespage/gamespage.component';
 import { ExploregamesComponent } from './exploregames/exploregames.component';
 import { ActivematchesComponent } from './activematches/activematches.component';
-
+import { MatRippleModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -67,7 +72,13 @@ import { ActivematchesComponent } from './activematches/activematches.component'
     ReactiveFormsModule,
     MatSidenavModule,
     MatListModule,
+    MatGridListModule,
     MatIconModule,
+    MatCheckboxModule,
+    MatRippleModule,
+    MatButtonToggleModule,
+    MatProgressSpinnerModule,
+    Ng2SearchPipeModule,
   ],
   providers: [
     {

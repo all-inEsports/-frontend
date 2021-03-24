@@ -1,11 +1,75 @@
-<div>
-    <H1>Leaderboard</H1>
-</div>
-<div>
-    <tr *ngFor="let user of users; let i = index">
-        <td>#{{i + 1}}: </td>
-        <td>
-            <p>{{user.UserName}} ----> {{user.Balance}}</p>
-        </td>
-    </tr>
-</div>
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <app-user-profile></app-user-profile>
+    </mat-sidenav>
+    <mat-sidenav-content style="opacity: 90%;">
+        <video id="my-video" muted loop autoplay oncanplay="this.muted=true" oncanplay="this.play()" onloadedmetadata="this.muted=true">
+        <source src="../../assets/video-temporary/lallin.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+        <mat-toolbar class="toolbar">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">Menu</mat-icon>
+        </button>
+            <!-- SEARCH BAR ON TOP -->
+            <span>
+          <!-- <mat-icon aria-hidden="false" aria-label="search bar icon">search</mat-icon> -->
+        </span>
+        </mat-toolbar>
+        <!-- Add Content Here -->
+        <!-- HOME PAGE BEGINS HERE -->
+        <app-exploregames></app-exploregames>
+        <!--  ACTIVE MATCHES  TODO: Write and NG-FOR to populate with current matches -->
+        <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
+        <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
+        <br>
+        <h1 class="match-game-header">LEADERBOARD</h1>
+        <div class="bottom-container">
+            <div class="match-game-container">
+                <div class="match-game-box">
+                    <div *ngFor="let user of users; let i = index">
+
+                        <mat-card class="match-game-entry first" *ngIf="i==0">
+                            <mat-card-title class="game-title-container">
+                                <div class="game-title">
+                                    <p>{{i + 1}}</p>
+                                </div>
+                            </mat-card-title>
+                            <mat-card-title class="team-name-container">Balance: {{user.Balance}}</mat-card-title>
+                            <mat-card-title class="team-name-container">User: {{user.UserName}}</mat-card-title>
+                        </mat-card>
+                        <mat-card class="match-game-entry second" *ngIf="i==1">
+                            <mat-card-title class="game-title-container">
+                                <div class="game-title">
+                                    <p>{{i + 1}}</p>
+                                </div>
+                            </mat-card-title>
+                            <mat-card-title class="team-name-container">Balance: {{user.Balance}}</mat-card-title>
+                            <mat-card-title class="team-name-container">User: {{user.UserName}}</mat-card-title>
+                        </mat-card>
+                        <mat-card class="match-game-entry third" *ngIf="i==2">
+                            <mat-card-title class="game-title-container">
+                                <div class="game-title">
+                                    <p>{{i + 1}}</p>
+                                </div>
+                            </mat-card-title>
+                            <mat-card-title class="team-name-container">Balance: {{user.Balance}}</mat-card-title>
+                            <mat-card-title class="team-name-container">User: {{user.UserName}}</mat-card-title>
+                        </mat-card>
+                        <mat-card class="match-game-entry" *ngIf="i>2">
+                            <mat-card-title class="game-title-container">
+                                <div class="game-title">
+                                    <p>{{i + 1}}</p>
+                                </div>
+                            </mat-card-title>
+                            <mat-card-title class="team-name-container">Balance: {{user.Balance}}</mat-card-title>
+                            <mat-card-title class="team-name-container">User: {{user.UserName}}</mat-card-title>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

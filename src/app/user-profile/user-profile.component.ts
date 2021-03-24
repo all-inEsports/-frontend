@@ -15,13 +15,22 @@ export class UserProfileComponent implements OnInit {
   constructor(private router: Router, private auth: AuthenticationService) { }
 
   ngOnInit(): void {
+
+    this.token = this.auth.readToken();
     this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
-        this.token = this.auth.readToken();
-      }
+      
+      //if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
+      //  this.token = this.auth.readToken();
+      //}
     });
   }
 
+  public home(){
+    this.router.navigate(['/home']);
+  }
+  public leaderboard(){
+    this.router.navigate(['/leaderboard']);
+  }
   public logout(){
     this.auth.logout();
     this.router.navigate(['/']);

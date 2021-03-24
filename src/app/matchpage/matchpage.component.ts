@@ -19,18 +19,23 @@ export class MatchpageComponent implements OnInit {
     shareReplay()
   );
 
-  Match!: Match;
+  Game!: any;
   querySub:any;
-
+  teamChoice!: string;
+  bettingAmount!: Number;
+  
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.querySub = this.route.params.subscribe(params=>{
       this.service.getGameById(params['id']).subscribe(data=>{
-        this.Match = data;
+        this.Game = data;
       });
     })
-    
+  }
+  onSubmit(): void{
+    console.log(this.teamChoice)
+    console.log(this.bettingAmount)
   }
 }

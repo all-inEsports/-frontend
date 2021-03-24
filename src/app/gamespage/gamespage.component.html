@@ -1,65 +1,22 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-
-        <!-- CHANGE TO THE USER'S SELECTED PROFILE PIC FOR LINKUP -->
-        <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
-            <img src="../../assets/tempImage/big-esports-event.jpg" alt="" style="height: 150px; width: 150px; border-radius: 50%;">
-        </div>
-        <!-- CHANGE TO THE USER'S SELECTED USERNAME FOR LINKUP -->
-        <div class="username">
-            <h1>User-X</h1>
-        </div>
-
-
-        <mat-nav-list class="user-personal-information-list">
-            <mat-list-item>
-                <div class="personal">
-                    <h3>Personal</h3>
-                </div>
-            </mat-list-item>
-            <!-- THESE TWO SHOULD BE REPLACED WITH THE USER'S RANKING AND BALANCE -->
-            <mat-card mat-list-item class="user-stats">Player Balance Goes Here</mat-card>
-            <mat-card mat-list-item class="user-stats">Player Ranking Goes Here</mat-card>
-        </mat-nav-list>
-
-        <div class="user-personal-list-div">
-            <mat-nav-list class="user-active-bets-list">
-                <mat-list-item>
-                    <div class="user-active-bets">
-                        <h3>Active Bets</h3>
-                    </div>
-                </mat-list-item>
-                <!-- NG FOR SHOULD GO HERE TO LOOP THROUGH BETS THE USER CURRENTLY HAS OPEN  -->
-                <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-                <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-                <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-                <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-                <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-                <mat-card mat-list-item class="user-stats">Active Bets Go Here</mat-card>
-                <!-- END OF HARDCODED SAMPLE -->
-            </mat-nav-list>
-        </div>
+        <app-user-profile></app-user-profile>
     </mat-sidenav>
-    <mat-sidenav-content>
-        <mat-toolbar class="toolbar">
-            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-            <!-- SEARCH BAR ON TOP -->
-            <span>
-          <!-- <mat-icon aria-hidden="false" aria-label="search bar icon">search</mat-icon> -->
-        </span>
-        </mat-toolbar>
-        <!-- Add Content Here -->
-        <!-- HOME PAGE BEGINS HERE -->
+    <mat-sidenav-content style="opacity: 90%; margin-top:10px">
+        <video id="my-video" muted loop autoplay oncanplay="this.muted=true" oncanplay="this.play()" onloadedmetadata="this.muted=true">
+      <source src="../../assets/video-temporary/lallin.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+  </video>
+
         <app-exploregames></app-exploregames>
         <!--  ACTIVE MATCHES  TODO: Write and NG-FOR to populate with current matches -->
         <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
         <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
         <br>
-        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='league-of-legends'">Active Matches - League of Legends</h1>
-        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='cs-go'">Active Matches- Counter-Strike: Global Offensive</h1>
-        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='dota-2'">Active Matches - Dota 2</h1>
+        <h1 class="match-game-header" *ngIf="!Games[0]?.videogame[0].slug">EXPLORE</h1>
+        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='league-of-legends'">EXPLORE LEAGUE OF LEGENDS</h1>
+        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='cs-go'">EXPLORE COUNTER-STRIKE: GLOBAL OFFENSIVE</h1>
+        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='dota-2'">EXPLORE DOTA 2</h1>
         <app-activematches></app-activematches>
     </mat-sidenav-content>
 </mat-sidenav-container>

@@ -20,12 +20,12 @@ export class AuthenticationService {
   }
 
   public readToken(): any{
-    const token: any = localStorage.getItem('access_token');
+    const token: any = this.getToken();
     return helper.decodeToken(token);
   }
 
   isAuthenticated(): boolean {
-    const token = localStorage.getItem('access_token');
+    const token = this.getToken();
 
     // Note: We can also use helper.isTokenExpired(token) 
     // to see if the token is expired
@@ -39,9 +39,9 @@ export class AuthenticationService {
     }
   }
 
-  login(user: User): Observable<any> {
+  login(username:string,password:string): Observable<any> {
     // Attempt to login
-    return this.http.post<any>(`http://localhost:3000/v1/login`, user);
+    return this.http.post<any>(`${USER_API}/v1/login`, {username,password});
   }
 
   public logout() {

@@ -1,20 +1,45 @@
+<div class="searchBox">
+    <mat-form-field color="primary" class="full-width">
+        <mat-label style="color:rgba(255, 255, 255, .37); margin-left:10px">Search for Teams, Games, Dates...</mat-label>
+        <input matInput style="color:white" autocomplete="off" type="text" name="search" [(ngModel)]="searchText">
+    </mat-form-field>
+</div>
 <div class="bottom-container">
     <div class="match-game-container">
         <div class="match-game-box">
-            <div *ngFor="let game of Games;">
-                <div *ngIf="game.opponents[0]?.opponent?.image_url && game?.opponents[1]?.opponent?.image_url">
-                    <mat-card [routerLink]="['/match',game._id]" class="match-game-entry">
-                        <mat-card-title *ngIf="game?.videogame[0].slug=='league-of-legends'">League of Legends</mat-card-title>
-                        <mat-card-title *ngIf="game?.videogame[0].slug=='cs-go'">Counter-Strike: Global Offensive</mat-card-title>
-                        <mat-card-title *ngIf="game?.videogame[0].slug=='dota-2'">Dota 2</mat-card-title>
-                        <div>
-                            <img class="teamImage" src="{{game?.opponents[0]?.opponent?.image_url}}">
-                            <img class="teamImage" src="{{game?.opponents[1]?.opponent?.image_url}}">
-                        </div>
-                        <span>{{game?.opponents[0]?.opponent?.name}} vs. {{game?.opponents[1]?.opponent?.name}}</span>
-                    </mat-card>
-                </div>
+            <div style="text-align:center" *ngIf="Games[0]==null; else elseBlock">
+                <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+                <img src="https://cdn.discordapp.com/attachments/755101256825176307/824026110362124328/Desktop_-_22.png">
+                <div class="team-name-container">Loading Games...</div>
             </div>
+            <ng-template #elseBlock>
+                <div *ngFor="let game of Games | filter:searchText">
+                    <div *ngIf="game.opponents[0]?.opponent?.image_url && game?.opponents[1]?.opponent?.image_url && getDate(game?.begin_at) > currentDate.getTime()">
+                        <mat-card [routerLink]="['/match',game._id]" class="match-game-entry">
+                            <mat-card-title class="game-title-container" *ngIf="game?.videogame[0].slug=='league-of-legends'">
+                                <div class="game-title">
+                                    <p>League of Legends</p>
+                                </div>
+                            </mat-card-title>
+                            <mat-card-title class="game-title-container" *ngIf="game?.videogame[0].slug=='cs-go'">
+                                <div class="game-title">
+                                    <p>Counter-Strike: Global Offensive</p>
+                                </div>
+                            </mat-card-title>
+                            <mat-card-title class="game-title-container" *ngIf="game?.videogame[0].slug=='dota-2'">
+                                <div class="game-title">
+                                    <p>Dota 2</p>
+                                </div>
+                            </mat-card-title>
+                            <img class="teamImage1" src="{{game?.opponents[0]?.opponent?.image_url}}">
+                            <img class="teamImage2" src="{{game?.opponents[1]?.opponent?.image_url}}">
+                            <mat-card-title class="game-date">{{game?.begin_at | date:'yyyy-MM-dd'}}</mat-card-title>
+                            <mat-card-title class="team-name-container">{{game?.opponents[0]?.opponent?.name}} vs. {{game?.opponents[1]?.opponent?.name}}</mat-card-title>
+                            <mat-card-title class="number-of-games">Number of Games: {{game?.number_of_games}}</mat-card-title>
+                        </mat-card>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

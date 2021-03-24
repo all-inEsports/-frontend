@@ -26,6 +26,7 @@
     "@sencha/ext-angular-modern": "^7.3.0",
     "@sencha/ext-modern-runtime": "^7.3.3",
     "jsonwebtoken": "^8.5.1",
+    "ng2-search-filter": "^0.5.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

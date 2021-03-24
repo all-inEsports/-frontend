@@ -1,36 +1,30 @@
-
-.main-login-page-div mat-card{
+.main-login-page-div mat-card {
     padding: 0px;
     background: rgba(18, 18, 18, 0.9);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    border-radius: 10;
+    border-radius: 10px;
 }
 
-.login-form{
-    padding:20px;
-
+.login-form {
+    padding: 20px;
 }
 
-// #my-video{
-//     position: fixed;
-//     right: 0;
-//     bottom: 0;
-//     min-width: 100%;
-//     min-height: 100%;
-    
-// }
+.login-card {
+    width: 500px;
+    height: 400px;
+}
 
-#username-input, #password-input{
-    background: #303339;
-    height:40px;
+#username-input,
+#password-input {
+    background: rgba(255, 255, 255, 0.87);
+    height: 40px;
     border-radius: 3px;
-    color: rgba(255, 255, 255, 0.87);
+    color: rgba(0, 0, 0, 0.87);
     font-size: 18px;
     font-weight: 40;
-    
 }
 
-#login-button{
+#login-button {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -41,39 +35,58 @@
     height: 50px;
 }
 
-.md-display-3{
+.md-display-3 {
     color: rgba(255, 255, 255, 0.87);
-    font-size:70px;
+    font-size: 70px;
     line-height: 85px;
     left: 511px;
     top: 301px;
     padding-left: 20px;
     font-weight: 400;
+    user-select: none;
     -webkit-user-select: none;
 }
 
-.md-display-1{
+.md-display-1 {
     color: rgba(255, 255, 255, 0.87);
-    font-size:32px;
+    font-size: 32px;
     line-height: 1px;
     left: 511px;
     top: 301px;
     padding-left: 20px;
     font-weight: 400;
+    user-select: none;
     -webkit-user-select: none;
 }
 
+
 /* input color class */
+
 ::ng-deep input.mat-input-element {
-    color:#550798;
-  }
-  
-  /* Change label color on focused */
+    color: #550798;
+}
+
+
+/* Change label color on focused */
+
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-    color:rgba(255, 255, 255, .38) !important;
-  }
-  
-  /* underline border color on focused */
-::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
-    background-color:#550798 !important;
-  }
+    color: rgba(255, 255, 255, .38) !important;
+}
+
+
+/* underline border color on focused */
+
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+    background-color: #550798 !important;
+}
+
+.register-link {
+    color: rgba(255, 255, 255, .38);
+    p {
+        padding-left: 20px;
+    }
+}
+
+.register-link:hover {
+    cursor: pointer;
+}
