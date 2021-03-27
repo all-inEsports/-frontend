@@ -60,16 +60,14 @@ export class LoginComponent implements OnInit, CanActivate {
           this.router.navigate(['/home']);
         }
       );*/  
-      this.authService.login(this.userName,this.password).pipe(catchError(err => of([]))).subscribe(err =>{
-        console.log("Http error: " + err);
-        this.errorMSG = "Username or Password do not exist.";
-      },(obj)=>{
+
+      this.authService.login(this.userName,this.password).subscribe((obj)=>{
           if(obj.token){
             console.log(obj.message);
             localStorage.setItem('access_token', obj.token);
             this.router.navigate(['/home']);
           }
-      })
+      }, error => this.errorMSG = "Username or Password do not exist")
     }
   };
 

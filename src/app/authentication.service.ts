@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { throwError as observableThrowError, Observable, of } from 'rxjs';
 import { User } from './user.model';
 import { USER_API } from './api.constants';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { tap, catchError } from 'rxjs/operators';
 //import { config } from './../'
 
 const helper = new JwtHelperService();
@@ -41,7 +42,12 @@ export class AuthenticationService {
 
   login(username:string,password:string): Observable<any> {
     // Attempt to login
-    return this.http.post<any>(`${USER_API}/v1/login`, {username,password});
+    return this.http.post<any>(`${USER_API}/v1/login`, {username,password})
+    .pipe(tap(data => console.log(data)) , catchError(this.errorHandler));
+  }
+
+  errorHandler(error: HttpErrorResponse){
+    return observableThrowError(error.message || "Server Error");
   }
 
   public logout() {
