@@ -2,7 +2,7 @@ export class User{
   ProfilePic!: string;
   IsAdmin!: boolean;
   Balance!: number;
-  _id!: number;
+  _id!: Object;
   UserName!: string;
   Email!: string;
   Password!: string;

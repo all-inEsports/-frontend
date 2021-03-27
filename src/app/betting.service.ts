@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Match } from './Match';
+import { Bet } from './Bet';
+import { BETTING_API } from './api.constants';
+@Injectable({
+  providedIn: 'root'
+})
+export class BettingService {
+
+  constructor(private http: HttpClient) { }
+
+  getUserBetsInProgress(userName:string):Observable<Bet[]>{
+    return this.http.get<any[]>(`${BETTING_API}/v1/user/bets/${userName}?InProgress=true`);
+  }
+
+  
+  newUserBet(bet):Observable<any>{
+    return this.http.post<any>(`${BETTING_API}/v1/bet`, bet);
+  }
+
+  resolve(bet):Observable<any>{
+    return this.http.put<any>(`${BETTING_API}/v1/bet/resolve/${bet._id}`,bet);
+  }
+}
