@@ -7,7 +7,7 @@
 <div class="bottom-container">
     <div class="match-game-container">
         <div class="match-game-box">
-            <div style="text-align:center" *ngIf="Games[0]==null; else elseBlock">
+            <div style="text-align:center" *ngIf="!Games[0]; else elseBlock">
                 <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
                 <img src="https://cdn.discordapp.com/attachments/755101256825176307/824026110362124328/Desktop_-_22.png">
                 <div class="team-name-container">Loading Games...</div>

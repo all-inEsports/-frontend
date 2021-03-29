@@ -14,7 +14,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class LeaderboardComponent implements OnInit {
 
-
+  searchText!: string;
+  userRankings;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
     map(result => result.matches),
@@ -24,13 +25,17 @@ export class LeaderboardComponent implements OnInit {
   users: Array<User>;
   constructor(private service:UserDataService,private breakpointObserver: BreakpointObserver) {
     this.users = [];
+    this.userRankings = new Map();
   }
 
   ngOnInit(): void {
-    this.service.getUsers().subscribe(users_ =>
+    this.service.getUsers().subscribe(users_ =>{
       this.users = users_
-    );
-    
+      this.users.forEach((element,i)=>{
+        this.userRankings.set(element,i)
+      })
+      console.log(this.userRankings)
+    });
   }
 
 }

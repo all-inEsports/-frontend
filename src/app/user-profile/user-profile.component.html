@@ -23,7 +23,7 @@
     <!-- THESE TWO SHOULD BE REPLACED WITH THE USER'S RANKING AND BALANCE -->
     <mat-card mat-list-item class="user-stats " *ngIf="token ">{{token.Balance}}</mat-card>
     <mat-card mat-list-item class="user-stats " *ngIf="!(token) ">Theres no balance</mat-card>
-    <mat-card mat-list-item class="user-stats ">Player Ranking Goes Here</mat-card>
+    <mat-card mat-list-item class="user-stats leaderboard" (click)="leaderboard()">Leaderboard</mat-card>
 </mat-nav-list>
 
 <div class="user-personal-list-div ">

@@ -48,6 +48,12 @@ h1 {
     background-color: #1e1e1e;
 }
 
+.leaderboard {
+    text-align: center;
+    cursor: pointer;
+    background-color: #550798 !important;
+}
+
 .sidenav .mat-toolbar {
     background: inherit;
 }
