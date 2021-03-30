@@ -76,10 +76,11 @@ export class MatchpageComponent implements OnInit {
           if(obj.token){
             console.log(obj.token)
           localStorage.setItem('access_token', obj.token);
+          this.router.navigate(['/home']);
           }
         })
         
-       this.router.navigate(['/home']);
+      
         
       });
       
