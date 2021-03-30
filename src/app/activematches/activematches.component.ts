@@ -3,7 +3,7 @@ import { GameDataService } from '../game-data.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../user.model';
 
 @Component({
@@ -27,8 +27,9 @@ export class ActivematchesComponent implements OnInit{
   dateTimeStamp!: Number;
   searchText!: string;
 
-  constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {
+  constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private route: ActivatedRoute,private router: Router) {
     this.Games = [];
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit(): void {

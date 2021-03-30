@@ -4,9 +4,12 @@ import { BettingService } from '../betting.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Bet } from '../Bet'
+import { Transaction } from '../Transaction'
 import { AuthenticationService } from '../authentication.service';
+import { TransactionService } from '../transaction.service';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-matchpage',
@@ -30,8 +33,9 @@ export class MatchpageComponent implements OnInit {
   activeBets!: any;
   alreadyBet!: boolean;
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,
-              private route: ActivatedRoute, private betService:BettingService, private auth: AuthenticationService ) {
-  }
+              private route: ActivatedRoute, private router: Router,private betService:BettingService, private auth: AuthenticationService, private transactionService:TransactionService, private userService:UserDataService ) {
+             
+              }
 
   ngOnInit(): void {
     this.token = this.auth.readToken();
@@ -64,7 +68,22 @@ export class MatchpageComponent implements OnInit {
       this.currentBet.Amount=this.bettingAmount;
       this.currentBet.IsWin = false;
       this.currentBet.IsInProgress = true;
-      this.betService.newUserBet(this.currentBet).subscribe();
+      this.betService.newUserBet(this.currentBet).subscribe( async ()=>{
+        this.transactionService.addNewTransaction(new Transaction(this.token.UserName,this.bettingAmount,'DEBT',`Betting ${this.bettingAmount} on ${this.Game.slug[0]}`)).subscribe();
+       let value = await this.transactionService.calculateBalance(this.token.UserName)
+
+          this.userService.updateBalance(value,this.token._id).subscribe((obj)=>{
+          if(obj.token){
+            console.log(obj.token)
+          localStorage.setItem('access_token', obj.token);
+          }
+        })
+        
+       this.router.navigate(['/home']);
+        
+      });
+      
+      
     }
   }
-}
+} 

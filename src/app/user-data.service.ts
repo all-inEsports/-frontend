@@ -26,6 +26,9 @@ export class UserDataService {
   update(user:User):Observable<any>{
     return this.http.put<any>(`${USER_API}/v1/users/${user._id}`,user);
   }
+  updateBalance(balance:Number,id:Object):Observable<any>{
+    return this.http.put<any>(`${USER_API}/v1/users/${id}?Balance=${balance}`,{});
+  }
 
   getAllUsers():Observable<User[]> {
     const perPage = Number.MAX_SAFE_INTEGER.toString();

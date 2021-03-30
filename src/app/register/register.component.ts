@@ -2,6 +2,8 @@
 import { User } from "../user.model";
 import { Router } from '@angular/router';
 import { UserDataService } from "../user-data.service";
+import { TransactionService } from "../transaction.service";
+import { Transaction } from '../Transaction';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +22,7 @@ export class RegisterComponent implements OnInit {
   termsAndConditions: boolean = false;
 
 
-  constructor(private data: UserDataService, private router: Router) { }
+  constructor(private data: UserDataService, private router: Router,private transaction: TransactionService) { }
 
   ngOnInit(): void {
   }
@@ -34,7 +36,10 @@ export class RegisterComponent implements OnInit {
       this.user.Date = new Date();
       this.user.ProfilePic = "default.png";
       this.user.Balance = 5000;
-      this.data.register(this.user).subscribe(() => this.router.navigate(['']))
+      this.data.register(this.user).subscribe(() => {
+        this.transaction.addNewTransaction(new Transaction(this.user.UserName,this.user.Balance,'CREDIT',`Initialize User Balance 5000`)).subscribe();
+        this.router.navigate(['']);
+      })
     }else if(this.termsAndConditions == false){
       this.errorMSG = "Accept the Terms and Conditions to create account."
     }else if(this.age == false){

@@ -23,8 +23,9 @@ export class HomepageComponent implements OnInit {
   );
 
   Games: Array<any>;
-  constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver) {
+  constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,private router: Router) {
     this.Games = [];
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit(): void {
