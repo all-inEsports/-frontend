@@ -31,11 +31,12 @@
         <div class="user-active-bets">
             <h3>Active Bets</h3>
         </div>
-        <!-- NG FOR SHOULD GO HERE TO LOOP THROUGH BETS THE USER CURRENTLY HAS OPEN  -->
-        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
-        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
-        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
-        <mat-card mat-list-item class="user-stats ">Active Bets Go Here</mat-card>
-        <!-- END OF HARDCODED SAMPLE -->
+        <div *ngFor="let bet of currentGames">
+            <a routerLink="/match/{{bet._id}}">
+                <mat-card mat-list-item class="user-stats">
+                    <div>{{bet.name}}</div>
+                </mat-card>
+            </a>
+        </div>
     </mat-nav-list>
 </div>

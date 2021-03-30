@@ -16,11 +16,11 @@ export class BettingService {
   }
 
   
-  newUserBet(bet):Observable<any>{
+  newUserBet(bet:Bet):Observable<any>{
     return this.http.post<any>(`${BETTING_API}/v1/bet`, bet);
   }
 
-  resolve(bet):Observable<any>{
+  resolve(bet:Bet):Observable<any>{
     return this.http.put<any>(`${BETTING_API}/v1/bet/resolve/${bet._id}`,bet);
   }
 }
