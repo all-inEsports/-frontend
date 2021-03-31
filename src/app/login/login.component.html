@@ -1,0 +1,33 @@
+<!-- <video autoplay muted loop id="my-video">
+    <source src="../../assets/video-temporary/lallin.mp4" type="video/mp4">
+</video> -->
+<app-background-video></app-background-video>
+<div fxLayoutAlign="center center" fxFlexFill class="main-login-page-div" (ngSubmitt)="onSubmit()">
+    <mat-card fxFlex="30">
+        <img style="float:right; width:110px" src="https://cdn.discordapp.com/attachments/755101256825176307/824026110362124328/Desktop_-_22.png">
+        <section>
+            <h1 class="md-display-3">ALL IN</h1>
+        </section>
+        <section>
+            <h2 class="md-display-1">E-Sports</h2>
+        </section>
+        <section>
+            <div *ngIf="errorMSG" class="Error">
+                {{errorMSG}}
+            </div>
+        </section>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <input id="username-input" matInput placeholder="Username" [(ngModel)]="userName" required [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input id="password-input" matInput type="password" placeholder="Password" [(ngModel)]="password" required [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <button id="login-button" mat-raised-button type="Submit" (click)="onSubmit()">Login</button>
+        </form>
+        <a class="register-link" (click)="redirectToSignUp()">
+            <p>Don't have an account?</p>
+        </a>
+    </mat-card>
+</div>
