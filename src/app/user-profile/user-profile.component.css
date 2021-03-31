@@ -48,6 +48,22 @@ h1 {
     background-color: #1e1e1e;
 }
 
+.mat-drawer-inner-container {
+    overflow-y: scroll !important;
+    height: 0px !important;
+    overflow-x: hidden;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+    background: transparent;
+    overflow: visible;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
 .leaderboard {
     text-align: center;
     cursor: pointer;

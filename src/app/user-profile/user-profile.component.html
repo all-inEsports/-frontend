@@ -21,8 +21,9 @@
         <h3>Personal</h3>
     </div>
     <!-- THESE TWO SHOULD BE REPLACED WITH THE USER'S RANKING AND BALANCE -->
-    <mat-card mat-list-item class="user-stats " *ngIf="token ">{{token.Balance}}</mat-card>
+    <mat-card mat-list-item class="user-stats " *ngIf="token && token.Balance!=0">{{token.Balance}}</mat-card>
     <mat-card mat-list-item class="user-stats " *ngIf="!(token) ">Theres no balance</mat-card>
+    <mat-card mat-list-item class="user-stats " *ngIf="token.Balance<=0" (click)="redeemFaucet()">Redeem Faucet</mat-card>
     <mat-card mat-list-item class="user-stats leaderboard" (click)="leaderboard()">Leaderboard</mat-card>
 </mat-nav-list>
 
@@ -33,8 +34,10 @@
         </div>
         <div *ngFor="let bet of currentGames">
             <a routerLink="/match/{{bet._id}}">
-                <mat-card mat-list-item class="user-stats">
+                <mat-card style="text-align: center;" mat-list-item class="user-stats">
+                    <div>{{bet.videogame[0].name}}</div>
                     <div>{{bet.name}}</div>
+                    <div>{{bet.begin_at | date:'yyyy-MM-dd'}}</div>
                 </mat-card>
             </a>
         </div>

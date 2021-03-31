@@ -46,6 +46,21 @@ h1 {
     border-bottom-right-radius: 10px;
 }
 
+.mat-drawer-inner-container {
+    overflow-y: scroll !important;
+    height: 0px !important;
+}
+
+::-webkit-scrollbar {
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
 .sidenav .mat-toolbar {
     background: inherit;
 }
