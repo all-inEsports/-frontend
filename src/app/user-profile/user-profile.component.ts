@@ -18,7 +18,9 @@ export class UserProfileComponent implements OnInit {
   public token: any;
   activeBets!: any;
   currentGames= new Array;
-  constructor(private router: Router, private auth: AuthenticationService, private betService:BettingService,private service:GameDataService, private userData:UserDataService, private transactionService:TransactionService) { }
+  constructor(private router: Router, private auth: AuthenticationService, private betService:BettingService,private service:GameDataService, private userData:UserDataService, private transactionService:TransactionService) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   ngOnInit(): void {
     this.token = this.auth.readToken();
@@ -53,15 +55,20 @@ export class UserProfileComponent implements OnInit {
     this.auth.logout();
     this.router.navigate(['/']);
   }
-  public redeemFaucet(){
+  public async redeemFaucet(){
     this.transactionService.addNewTransaction(new Transaction(this.token.UserName,1000,'CREDIT',`Daily amount`)).subscribe();
-    this.userData.updateBalance(1000,this.token._id).subscribe((obj)=>{
+   let value = await this.transactionService.calculateBalance(this.token.UserName);
+   this.userData.updateBalance(value,this.token._id).subscribe(async (obj)=>{
       if(obj.token){
         console.log(obj.token)
       localStorage.setItem('access_token', obj.token);
-      this.router.navigate(['/home']);
+      this.token = this.auth.readToken();
       }
+      this.token.Balance = value;
+      this.router.navigate(['/']);
     })
+  
+   
   }
   selectImage(event: any){
   }
