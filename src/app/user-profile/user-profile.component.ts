@@ -15,6 +15,8 @@ import { TransactionService } from '../transaction.service';
 })
 export class UserProfileComponent implements OnInit {
 
+  url: string | null = ""
+
   public token: any;
   activeBets!: any;
   currentGames= new Array;
@@ -24,6 +26,10 @@ export class UserProfileComponent implements OnInit {
    }
 
   async ngOnInit(){
+    if(localStorage.getItem("Profile_Image") == null){
+      localStorage.setItem("Profile_Image", "assets/defProfPic.png");
+    }
+    this.url = this.getprofilePic();
     this.token = this.auth.readToken();
     this.transactionService.getUserTransactions(this.token.UserName).subscribe(data=>{
       console.log(data)
@@ -59,6 +65,8 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['/leaderboard']);
   }
   public logout(){
+    this.url = "";
+    //localStorage.removeItem("Profile_Image")
     this.auth.logout();
     this.router.navigate(['/']);
   }
@@ -78,6 +86,26 @@ export class UserProfileComponent implements OnInit {
    
   }
   selectImage(event: any){
+    if(event.target.files){
+      var reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (event: any) => {
+        if(localStorage.getItem("Profile_Image") == null){
+          localStorage.setItem("Profile_Image", event.target.result);
+          window.location.reload();
+        }
+        else {
+          localStorage.removeItem("Profile_Image");
+          localStorage.setItem("Profile_Image", event.target.result);
+          window.location.reload();
+        }
+        
+      }
+    }
+  }
+
+  public getprofilePic(): string | null {
+    return localStorage.getItem("Profile_Image");
   }
 
 }

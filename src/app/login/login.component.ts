@@ -41,29 +41,6 @@ export class LoginComponent implements OnInit, CanActivate {
       this.errorMSG = "Invalid Password."
     }
     if(this.userName != null && this.password != null){
-      
-     /* //dummy token authentication
-      if(this.userName === this.payload.UserName){
-        if(this.password === this.payload.Password){
-          console.log("It logs in.")
-          localStorage.setItem('access_token', this.token);
-          this.router.navigate(['/home']);
-        }
-        else{
-          console.log("Password dont match..");
-        }
-      }
-      else{
-        console.log("Username dont match..");
-      }*/
-
-      /*this.authService.login(this.tempUser).subscribe(
-        (success) => {
-          // store the returned token in local storage as 'access_token'
-          localStorage.setItem('access_token',success.token);            // redirect to the "vehicles" route
-          this.router.navigate(['/home']);
-        }
-      );*/  
 
       this.authService.login(this.userName,this.password).subscribe((obj)=>{
           if(obj.token){
