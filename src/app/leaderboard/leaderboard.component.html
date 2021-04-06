@@ -5,7 +5,7 @@
     </mat-sidenav>
     <mat-sidenav-content style="opacity: 90%; margin-top:10px;">
         <video id="my-video" muted loop autoplay oncanplay="this.muted=true" oncanplay="this.play()" onloadedmetadata="this.muted=true">
-        <source src="../../assets/video-temporary/lallin.mp4" type="video/mp4">
+        <source src="../../assets/video-temporary/slow-allin-bg.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
         <!-- Add Content Here -->
@@ -18,8 +18,8 @@
         <h1 class="match-game-header">LEADERBOARD</h1>
         <div class="searchBox">
             <mat-form-field color="primary" class="full-width">
-                <mat-label style="color:rgba(255, 255, 255, .37); margin-left:10px">Search for users...</mat-label>
-                <input matInput style="color:white" autocomplete="off" type="text" name="search" [(ngModel)]="searchText">
+                <mat-label class="searchBar" style="color:rgba(255, 255, 255, .37); margin-left:10px">Search for users...</mat-label>
+                <input matInput class="sarchBar" style="color:white" autocomplete="off" type="text" name="search" [(ngModel)]="searchText">
             </mat-form-field>
         </div>
         <div class="bottom-container">
