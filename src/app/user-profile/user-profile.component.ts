@@ -23,13 +23,19 @@ export class UserProfileComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    }
 
-  ngOnInit(): void {
+  async ngOnInit(){
     this.token = this.auth.readToken();
     this.transactionService.getUserTransactions(this.token.UserName).subscribe(data=>{
       console.log(data)
     })
-    Promise.resolve(this.transactionService.calculateBalance(this.token.UserName)).then(value=>{
-      this.Balance = value
+    let value = await this.transactionService.calculateBalance(this.token.UserName);
+    this.userData.updateBalance(value,this.token._id).subscribe(async (obj)=>{
+      if(obj.token){
+        console.log(obj.token)
+      localStorage.setItem('access_token', obj.token);
+      this.token = this.auth.readToken();
+      }
+      this.token.Balance = value;
     })
     this.router.events.subscribe((event: Event) => {
       //if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
