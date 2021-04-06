@@ -25,7 +25,7 @@
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    filter: blur(60px);
+    /* filter: blur(60px); */
     filter: blur(90px);
 }
 

@@ -20,10 +20,14 @@ export class LoginComponent implements OnInit, CanActivate {
   errorMSG: string = '';
   userName: string = "";
   password: string = "";
-  constructor(private data: UserDataService, private router: Router, private authService: AuthenticationService) { }
+  constructor(private data: UserDataService, private auth: AuthenticationService, private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
    // this.tempUser = new User();
+    if(this.auth.isAuthenticated())
+    {
+      this.router.navigate(['/home'])
+    }
   }
 
   onSubmit() {

@@ -71,20 +71,15 @@ export class MatchpageComponent implements OnInit {
       this.betService.newUserBet(this.currentBet).subscribe( async ()=>{
         this.transactionService.addNewTransaction(new Transaction(this.token.UserName,this.bettingAmount,'DEBT',`Betting ${this.bettingAmount} on ${this.Game.slug[0]}`)).subscribe();
        let value = await this.transactionService.calculateBalance(this.token.UserName)
-
           this.userService.updateBalance(value,this.token._id).subscribe((obj)=>{
           if(obj.token){
             console.log(obj.token)
           localStorage.setItem('access_token', obj.token);
-          this.router.navigate(['/home']);
+          this.router.navigate(['']);
           }
         })
-        
-      
-        
       });
-      
-      
+      this.alreadyBet=true;
     }
   }
 } 

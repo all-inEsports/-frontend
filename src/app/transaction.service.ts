@@ -22,8 +22,8 @@ export class TransactionService {
   calculateBalance(userName: string):Promise<Number> {
     return new Promise(resolve => {
       this.getUserTransactions(userName).subscribe((transactions) => {
-        resolve(transactions.filter(transaction => transaction.Type == 'CREDIT').map(e => e.Amount).reduce((a, b) => a.valueOf() + b.valueOf()).valueOf() -
-          transactions.filter(transaction => transaction.Type == 'DEBT').map(e => e.Amount).reduce((a, b) => a.valueOf() + b.valueOf()).valueOf());
+        resolve(transactions.filter(transaction => transaction.Type == 'CREDIT').map(e => e.Amount ? e.Amount : 0).reduce((a, b) => a.valueOf() + b.valueOf()).valueOf() -
+          transactions.filter(transaction => transaction.Type == 'DEBT').map(e => e.Amount ? e.Amount : 0).reduce((a, b) => a.valueOf() + b.valueOf()).valueOf());
       });
     })
 
