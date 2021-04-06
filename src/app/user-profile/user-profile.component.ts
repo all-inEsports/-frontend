@@ -26,6 +26,9 @@ export class UserProfileComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(localStorage.getItem("Profile_Image") == null){
+      localStorage.setItem("Profile_Image", "assets/defProfPic.png");
+    }
     this.url = this.getprofilePic();
     this.token = this.auth.readToken();
     this.transactionService.getUserTransactions(this.token.UserName).subscribe(data=>{
