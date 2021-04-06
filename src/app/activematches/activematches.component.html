@@ -8,9 +8,9 @@
     <div class="match-game-container">
         <div class="match-game-box">
             <div style="text-align:center" *ngIf="!Games[0]; else elseBlock">
-                <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
-                <img src="https://cdn.discordapp.com/attachments/755101256825176307/824026110362124328/Desktop_-_22.png">
-                <div class="team-name-container">Loading Games...</div>
+                <!-- <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner> -->
+                <img class="all-in-logo" src="https://cdn.discordapp.com/attachments/755101256825176307/824026110362124328/Desktop_-_22.png">
+                <div class="team-name-container" class="all-in-logo">Loading Games...</div>
             </div>
             <ng-template #elseBlock>
                 <div *ngFor="let game of Games | filter:searchText">
