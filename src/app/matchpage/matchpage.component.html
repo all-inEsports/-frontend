@@ -1,0 +1,62 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <app-user-profile></app-user-profile>
+    </mat-sidenav>
+    <mat-sidenav-content style="opacity:90%; margin-top:10px">
+        <video id="my-video" muted loop autoplay oncanplay="this.muted=true" oncanplay="this.play()" onloadedmetadata="this.muted=true">
+            <source src="../../assets/video-temporary/slow-allin-bg.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <app-exploregames></app-exploregames>
+        <h1 class="match-game-header">CURRENT MATCH</h1>
+        <div class="bottom-container">
+            <div class="match-game-box">
+                <mat-card class="match-game-entry">
+                    <mat-card-title class="game-title-container">
+                        <div class="game-title">
+                            {{Game?.opponents[0]?.opponent?.name}} vs. {{Game?.opponents[1]?.opponent?.name}}
+                        </div>
+                    </mat-card-title>
+                    <mat-card-title class="game-date">{{Game?.begin_at | date:'yyyy-MM-dd'}}</mat-card-title>
+                    <mat-card-title class="number-of-games">Number of Games: {{Game?.number_of_games}}</mat-card-title>
+                    <div *ngIf="alreadyBet==true; else elseBlock">
+                        <mat-card-content class="main-content">Bet already placed!</mat-card-content>
+                        <mat-card-content style="margin-top:20px">Placed on: {{currentBet.Date | date:'yyyy-MM-dd'}}</mat-card-content>
+                        <mat-card-content *ngIf="currentBet.TeamId == this.Game.opponents[0]?.opponent?.id">
+                            <img class="teamImage" src="{{Game?.opponents[0]?.opponent?.image_url}}"><br>You have selected team: {{Game?.opponents[0]?.opponent?.name}}
+                        </mat-card-content>
+                        <mat-card-content *ngIf="currentBet.TeamId == this.Game.opponents[1]?.opponent?.id">
+                            <img class="teamImage" src="{{Game?.opponents[1]?.opponent?.image_url}}"><br>You have selected team: {{Game?.opponents[1]?.opponent?.name}}
+                        </mat-card-content>
+                        <mat-card-content>Bet amount: {{currentBet.Amount}}</mat-card-content>
+                    </div>
+                    <ng-template #elseBlock>
+                        <mat-card-content class="place-your-bet">Place your bet!</mat-card-content>
+                        <form class="bettingForm" (ngSubmit)="onSubmit()" #bettingForm="ngForm">
+                            <mat-card-content class="teamChoiceGroup">
+                                <mat-button-toggle-group required [(ngModel)]="teamChoice" name="teamChoice">
+                                    <mat-button-toggle class="choiceButton" value="{{Game?.opponents[0]?.opponent?.name}}"><img class="teamImage" src="{{Game?.opponents[0]?.opponent?.image_url}}"></mat-button-toggle>
+                                    <mat-button-toggle class="choiceButton" value="{{Game?.opponents[1]?.opponent?.name}}"><img class="teamImage" src="{{Game?.opponents[1]?.opponent?.image_url}}"></mat-button-toggle>
+                                </mat-button-toggle-group>
+                            </mat-card-content>
+                            <mat-card-content style="color: rgba(255, 255, 255, .37);" *ngIf="teamChoice==null">Please select a team</mat-card-content>
+                            <mat-card-content style="color: rgba(255, 255, 255, .37);" *ngIf="teamChoice!=null">You have selected team: {{teamChoice}}</mat-card-content>
+                            <mat-form-field color="primary" appearance="legacy" class="example-full-width">
+                                <mat-label style="color:rgba(255, 255, 255, .37)">Enter Amount</mat-label>
+                                <input matInput type="text" name="bettingAmount" id="bettingAmount" [(ngModel)]="bettingAmount" required>
+                            </mat-form-field>
+                            <br>
+                            <button mat-button class="submitButton" [disabled]="!bettingForm.valid" type="submit">Submit</button>
+                        </form>
+                    </ng-template>
+                </mat-card>
+            </div>
+
+            <!-- THE FOLLOWING IS NOT QUITE WORKING - WILL FIGURE OUT LATER IF NEEDED -->
+            <!-- <div class="match-game-box">
+            <h2>New Games</h2>
+            <mat-card class="match-game-entry"></mat-card>
+          </div> -->
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,22 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <app-user-profile></app-user-profile>
+    </mat-sidenav>
+    <mat-sidenav-content style="opacity: 90%; margin-top:10px">
+        <video id="my-video" muted loop autoplay oncanplay="this.muted=true" oncanplay="this.play()" onloadedmetadata="this.muted=true">
+      <source src="../../assets/video-temporary/slow-allin-bg.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+  </video>
+
+        <app-exploregames></app-exploregames>
+        <!--  ACTIVE MATCHES  TODO: Write and NG-FOR to populate with current matches -->
+        <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
+        <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
+        <br>
+        <h1 class="match-game-header" *ngIf="!Games[0]?.videogame[0].slug">EXPLORE</h1>
+        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='league-of-legends'">EXPLORE LEAGUE OF LEGENDS</h1>
+        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='cs-go'">EXPLORE COUNTER-STRIKE: GLOBAL OFFENSIVE</h1>
+        <h1 class="match-game-header" *ngIf="Games[0]?.videogame[0].slug=='dota-2'">EXPLORE DOTA 2</h1>
+        <app-activematches></app-activematches>
+    </mat-sidenav-content>
+</mat-sidenav-container>

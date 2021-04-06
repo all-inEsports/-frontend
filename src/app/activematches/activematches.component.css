@@ -1,0 +1,132 @@
+.bottom-container {
+    opacity: 99%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 55%;
+    /* background: rgba(0, 0, 0, 0.8); */
+    /* border: 1px solid rgba(0, 0, 0, .2); */
+    backdrop-filter:(0px);
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.match-game-container {
+    width: 90%;
+    display: grid;
+    overflow-y: scroll;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.team-logos {
+    margin: auto;
+    margin-right: 65%;
+    float: left;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+    overflow: visible;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+.match-game-box {
+    height: 500px;
+    color: white;
+    position: relative;
+}
+
+.match-game-box::-webkit-scrollbar {
+    width: 0;
+}
+
+.match-game-entry {
+    height: 150px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #25262c;
+    background: rgba(0, 0, 0, .2);
+    /* Play around for some fun - this is the 'glass color and transparecny */
+    background: linear-gradient(to right bottom, rgba(255,255,255,.1), rgba(255,255,255,0.1));
+    border: 1px solid rgba(255, 255, 255, .02);
+    box-shadow: inset 0 16 0 10px #121212, 0px 0px 0px 10px; 
+    /* backdrop-filter:(50px); */
+    /* border: 1px solid rgba(0, 0, 0, .2); */
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+}
+
+.teamImage1 {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-left: 10%;
+}
+
+.teamImage2 {
+    float: right;
+    width: 100px;
+    height: 100px;
+    margin-right: 10%;
+}
+
+.number-of-games,
+.game-date,
+.team-name-container {
+    padding-bottom: 15px;
+    color: rgba(255, 255, 255, .60)
+}
+
+.game-title-container,
+.team-names {
+    color: rgba(255, 255, 255, .87);
+    font-size: 20px;
+    margin: auto;
+}
+
+.team-name-container {
+    color: rgba(255, 255, 255, .87);
+    text-align: center;
+}
+
+.game-title {
+    margin: auto;
+    font-size: 12pt;
+    color: rgba(255, 255, 255, .37);
+}
+
+.searchBox{
+    margin-left: 5%;
+}
+
+/* Can play with that anytime */
+.all-in-logo{
+    animation: fadeinout 1.25s linear 1 forwards;
+    animation-iteration-count: infinite;
+    margin: auto;
+}
+@keyframes fadeinout{
+    0%{opacity: 0.15;}
+    /* 25%{opacity: .5;} */
+    50%{opacity: 1;}
+    75%{opacity: 1;}
+    /* 75%{opacity: .5;} */
+    100%{opacity: 0;}
+}
