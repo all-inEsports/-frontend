@@ -2,12 +2,14 @@ import { ReadVarExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationStart } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
-import { UserDataService } from '../user-data.service'
-import { Bet } from '../Bet'
-import { Transaction } from '../Transaction'
+import { UserDataService } from '../user-data.service';
+import { Bet } from '../Bet';
+import { User } from '../user.model';
+import { Transaction } from '../Transaction';
 import { BettingService } from '../betting.service';
 import { GameDataService } from '../game-data.service';
 import { TransactionService } from '../transaction.service';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -15,8 +17,8 @@ import { TransactionService } from '../transaction.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  url: string | null = ""
-
+  url: string =  ""
+  tempUsr!: User;
   public token: any;
   activeBets!: any;
   currentGames= new Array;
@@ -26,11 +28,9 @@ export class UserProfileComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if(localStorage.getItem("Profile_Image") == null){
-      localStorage.setItem("Profile_Image", "assets/defProfPic.png");
-    }
-    this.url = this.getprofilePic();
+    
     this.token = this.auth.readToken();
+    this.url = this.token.ProfilePic;
     this.transactionService.getUserTransactions(this.token.UserName).subscribe(data=>{
       console.log(data)
     })
@@ -84,16 +84,20 @@ export class UserProfileComponent implements OnInit {
       var reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
       reader.onload = (event: any) => {
-        if(localStorage.getItem("Profile_Image") == null){
-          localStorage.setItem("Profile_Image", event.target.result);
-          window.location.reload();
-        }
-        else {
-          localStorage.removeItem("Profile_Image");
-          localStorage.setItem("Profile_Image", event.target.result);
-          window.location.reload();
-        }
-        
+        this.userData.getUserById(this.token._id).subscribe((user)=> {
+          this.tempUsr = user;
+        });
+        this.tempUsr.ProfilePic = event.target.result;
+        this.userData.update(this.tempUsr).subscribe();
+        this.tempUsr = new User;
+
+        this.auth.refreshtoken().subscribe((obj)=>{
+          if(obj.token){
+            localStorage.removeItem('access_token');
+            localStorage.setItem('access_token', obj.token);
+            window.location.reload();
+          }
+        })
       }
     }
   }
