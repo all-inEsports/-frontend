@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   public token: any;
   activeBets!: any;
   currentGames= new Array;
+  Balance!: any;
   constructor(private router: Router, private auth: AuthenticationService, private betService:BettingService,private service:GameDataService, private userData:UserDataService, private transactionService:TransactionService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    }
@@ -28,7 +29,7 @@ export class UserProfileComponent implements OnInit {
       console.log(data)
     })
     Promise.resolve(this.transactionService.calculateBalance(this.token.UserName)).then(value=>{
-      console.log(value)
+      this.Balance = value
     })
     this.router.events.subscribe((event: Event) => {
       //if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
