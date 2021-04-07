@@ -1,8 +1,8 @@
 <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
-    <img [src]="url" alt="" style="height: 150px; width: 150px; border-radius: 50%;">
-</div>
-<div>
-    <input type="file" id="changeimage" (change)="selectImage($event)">
+    <label for="image">
+        <input type="file" name="image" id="image" style="display: none;">
+        <img [src]="url" alt="" style="height: 150px; width: 150px; border-radius: 50%;">
+    </label>
 </div>
 <!-- CHANGE TO THE USER'S SELECTED USERNAME FOR LINKUP -->
 <div class="username">
@@ -14,7 +14,6 @@
     <!-- <button class="logout-button" mat-raised-button type="Submit" (click)="logout()">Logout</button> -->
     <!-- <button class="leaderboard-button" mat-raised-button type="Submit" (click)="leaderboard()">Leaderboard</button> -->
 </div>
-
 
 <mat-nav-list class="user-personal-information-list ">
     <div class="personal">
@@ -36,8 +35,8 @@
             <h3>Active Bets</h3>
         </div>
         <div *ngFor="let bet of currentGames; let i = index">
-            <a *ngIf="activeBets[i].IsInProgress" routerLink="/match/{{bet._id}}">
-                <mat-card mat-list-item class="user-stats">
+            <a *ngIf="activeBets[i].IsInProgress" class="active-bet" routerLink="/match/{{bet._id}}">
+                <mat-card mat-list-item class="user-stats" id="bet">
                     <div>{{bet.name}}</div>
                 </mat-card>
             </a>

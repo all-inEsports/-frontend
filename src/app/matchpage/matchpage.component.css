@@ -39,7 +39,10 @@ h1 {
 
 .sidenav {
     width: 300px;
-    background: rgba(18, 18, 18, 0.9);
+    background: rgba(35, 35, 37, 0.5);
+    background: rgba(60, 60, 60, 0.2);
+    border: 1px solid rgba(18, 18, 18, 0.45);
+    border: 1px solid rgba(60, 60, 60, 0.25);
     padding: 10px 10px 10px 10px;
     margin-top: 10px;
     margin-bottom: 5px;
@@ -299,4 +302,8 @@ h1 {
 .team{
     color: black;
     size: 100px;
+}
+
+.bet-amount-input{
+    font-size: 14pt;
 }
