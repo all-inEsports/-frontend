@@ -35,8 +35,8 @@
         <div class="user-active-bets">
             <h3>Active Bets</h3>
         </div>
-        <div *ngFor="let bet of currentGames">
-            <a routerLink="/match/{{bet._id}}">
+        <div *ngFor="let bet of currentGames; let i = index">
+            <a *ngIf="activeBets[i].IsInProgress" routerLink="/match/{{bet._id}}">
                 <mat-card mat-list-item class="user-stats">
                     <div>{{bet.name}}</div>
                 </mat-card>
