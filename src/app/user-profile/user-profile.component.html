@@ -1,5 +1,5 @@
 <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
-    <img src="../../assets/tempImage/big-esports-event.jpg" alt="" style="height: 150px; width: 150px; border-radius: 50%;">
+    <img [src]="url" alt="" style="height: 150px; width: 150px; border-radius: 50%;">
 </div>
 <div>
     <input type="file" id="changeimage" (change)="selectImage($event)">
@@ -24,7 +24,6 @@
     <mat-card mat-list-item class="user-stats " id="balance" *ngIf="token ">
         <div class="earnings-text">Earnings</div>
         <div class="balance-text">{{token.Balance}}</div>
-    
     </mat-card>
     <mat-card mat-list-item class="user-stats " *ngIf="!(token) ">Theres no balance</mat-card>
     <mat-card mat-list-item class="user-stats leaderboard" (click)="leaderboard()">Leaderboard</mat-card>

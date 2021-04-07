@@ -15,20 +15,33 @@ import { TransactionService } from '../transaction.service';
 })
 export class UserProfileComponent implements OnInit {
 
+  url: string | null = ""
+
   public token: any;
   activeBets!: any;
   currentGames= new Array;
+  Balance!: any;
   constructor(private router: Router, private auth: AuthenticationService, private betService:BettingService,private service:GameDataService, private userData:UserDataService, private transactionService:TransactionService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    }
 
-  ngOnInit(): void {
+  async ngOnInit(){
+    if(localStorage.getItem("Profile_Image") == null){
+      localStorage.setItem("Profile_Image", "assets/defProfPic.png");
+    }
+    this.url = this.getprofilePic();
     this.token = this.auth.readToken();
     this.transactionService.getUserTransactions(this.token.UserName).subscribe(data=>{
       console.log(data)
     })
-    Promise.resolve(this.transactionService.calculateBalance(this.token.UserName)).then(value=>{
-      console.log(value)
+    let value = await this.transactionService.calculateBalance(this.token.UserName);
+    this.userData.updateBalance(value,this.token._id).subscribe(async (obj)=>{
+      if(obj.token){
+        console.log(obj.token)
+      localStorage.setItem('access_token', obj.token);
+      this.token = this.auth.readToken();
+      }
+      this.token.Balance = value;
     })
     this.router.events.subscribe((event: Event) => {
       //if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
@@ -52,6 +65,8 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['/leaderboard']);
   }
   public logout(){
+    this.url = "";
+    //localStorage.removeItem("Profile_Image")
     this.auth.logout();
     this.router.navigate(['/']);
   }
@@ -71,6 +86,26 @@ export class UserProfileComponent implements OnInit {
    
   }
   selectImage(event: any){
+    if(event.target.files){
+      var reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (event: any) => {
+        if(localStorage.getItem("Profile_Image") == null){
+          localStorage.setItem("Profile_Image", event.target.result);
+          window.location.reload();
+        }
+        else {
+          localStorage.removeItem("Profile_Image");
+          localStorage.setItem("Profile_Image", event.target.result);
+          window.location.reload();
+        }
+        
+      }
+    }
+  }
+
+  public getprofilePic(): string | null {
+    return localStorage.getItem("Profile_Image");
   }
 
 }
