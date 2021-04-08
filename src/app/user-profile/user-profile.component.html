@@ -26,6 +26,7 @@
     </mat-card>
     <mat-card mat-list-item class="user-stats " *ngIf="!(token) ">Theres no balance</mat-card>
     <mat-card mat-list-item class="user-stats leaderboard" (click)="leaderboard()">Leaderboard</mat-card>
+    <mat-card mat-list-item class="user-stats leaderboard" [routerLink]="['/history']">History</mat-card>
     <mat-card mat-list-item class="user-stats leaderboard" id="logout" (click)="logout()">Logout</mat-card>
 </mat-nav-list>
 

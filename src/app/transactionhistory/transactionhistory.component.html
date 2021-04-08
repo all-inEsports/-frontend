@@ -1,0 +1,55 @@
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <app-user-profile></app-user-profile>
+    </mat-sidenav>
+    <mat-sidenav-content style="opacity: 90%; margin-top:10px;">
+        <video id="my-video" muted loop autoplay oncanplay="this.muted=true" oncanplay="this.play()" onloadedmetadata="this.muted=true">
+        <source src="../../assets/video-temporary/slow-allin-bg.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+        <!-- Add Content Here -->
+        <!-- HOME PAGE BEGINS HERE -->
+        <app-exploregames></app-exploregames>
+        <!--  ACTIVE MATCHES  TODO: Write and NG-FOR to populate with current matches -->
+        <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
+        <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
+        <br>
+        <h1 class="match-game-header">HISTORY</h1>
+        <div class="searchBox">
+            <mat-form-field color="primary" class="full-width">
+                <mat-label class="searchBar" style="color:rgba(255, 255, 255, .37); margin-left:10px">Search for past bets...</mat-label>
+                <input matInput class="sarchBar" style="color:white" autocomplete="off" type="text" name="search" [(ngModel)]="searchText">
+            </mat-form-field>
+        </div>
+        <div class="bottom-container">
+            <div class="match-game-container">
+                <div class="match-game-box">
+                    <div *ngFor="let bet of history | filter:searchText">
+                        <mat-card *ngIf='bet.Type=="DEBT"' class="match-game-entry debt">
+                            <mat-card-title class="game-title-container">
+                                <div class="game-title">
+                                    <p>Bet Placed!</p>
+                                </div>
+                            </mat-card-title>
+                            <mat-card-title class="team-name-container">Amount Taken: {{bet.Amount}}</mat-card-title>
+                            <mat-card-title class="team-name-container">Date: {{bet.Date | date:'yyyy-MM-dd'}}</mat-card-title>
+                        </mat-card>
+                        <mat-card *ngIf='bet.Type=="CREDIT"' class="match-game-entry credit">
+                            <mat-card-title class="game-title-container">
+                                <div class="game-title" *ngIf='bet.Description.includes("Won")'>
+                                    <p>Bet Won!</p>
+                                </div>
+                                <div class="game-title" *ngIf='!bet.Description.includes("Won")'>
+                                    <p>Faucet</p>
+                                </div>
+                            </mat-card-title>
+                            <mat-card-title class="team-name-container">Amount Taken: {{bet.Amount}}</mat-card-title>
+                            <mat-card-title class="team-name-container">Date: {{bet.Date | date:'yyyy-MM-dd'}}</mat-card-title>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

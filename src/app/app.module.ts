@@ -38,6 +38,7 @@ import { ActivematchesComponent } from './activematches/activematches.component'
 import { MatRippleModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { TransactionhistoryComponent } from './transactionhistory/transactionhistory.component';
 
 
 
@@ -56,6 +57,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     GamespageComponent,
     ExploregamesComponent,
     ActivematchesComponent,
+    TransactionhistoryComponent,
   ],
   imports: [
     BrowserModule,

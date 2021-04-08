@@ -33,6 +33,9 @@ export class UserProfileComponent implements OnInit {
     this.token = this.auth.readToken();
     this.transactionService.getUserTransactions(this.token.UserName).subscribe(data=>{
       console.log(data)
+      for(let i = 0 ;i<data.length;i++){
+        console.log(data[i].Description.includes("Won"))
+      }
     })
     let value = await this.transactionService.calculateBalance(this.token.UserName);
     this.userData.updateBalance(value,this.token._id).subscribe(async (obj)=>{
