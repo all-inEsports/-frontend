@@ -31,23 +31,8 @@ export class UserProfileComponent implements OnInit {
     }
     this.url = this.getprofilePic();
     this.token = this.auth.readToken();
-    this.transactionService.getUserTransactions(this.token.UserName).subscribe(data=>{
-      console.log(data)
-    })
     let value = await this.transactionService.calculateBalance(this.token.UserName);
-    this.userData.updateBalance(value,this.token._id).subscribe(async (obj)=>{
-      if(obj.token){
-        console.log(obj.token)
-      localStorage.setItem('access_token', obj.token);
-      this.token = this.auth.readToken();
-      }
-      this.token.Balance = value;
-    })
-    this.router.events.subscribe((event: Event) => {
-      //if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
-      //  this.token = this.auth.readToken();
-      //}
-    });
+    this.Balance = value
     this.betService.getUserBetsInProgress(this.token.UserName).subscribe(data=>{
       this.activeBets = data;
       console.log(this.activeBets)
