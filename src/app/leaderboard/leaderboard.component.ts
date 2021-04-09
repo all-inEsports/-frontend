@@ -34,7 +34,6 @@ export class LeaderboardComponent implements OnInit {
       this.users.forEach((element,i)=>{
         this.userRankings.set(element,i)
       })
-      console.log(this.userRankings)
     });
   }
 

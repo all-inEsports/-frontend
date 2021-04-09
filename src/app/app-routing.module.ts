@@ -8,11 +8,13 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { LoginComponent } from './login/login.component';
 import { MatchpageComponent } from './matchpage/matchpage.component';
 import { RegisterComponent } from './register/register.component';
+import { TransactionhistoryComponent } from './transactionhistory/transactionhistory.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
   {path:'leaderboard', component:LeaderboardComponent, canActivate: [AuthGuard]},
   {path:'register', component: RegisterComponent},
+  {path:'history', component:TransactionhistoryComponent, canActivate: [AuthGuard]},
   {path:'home', component: HomepageComponent, canActivate: [AuthGuard]},
   {path:'match/:id', component: MatchpageComponent, canActivate: [AuthGuard]},
   {path:'games/:id', component: GamespageComponent, canActivate: [AuthGuard]},

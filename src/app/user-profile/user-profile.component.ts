@@ -17,7 +17,7 @@ import { from } from 'rxjs';
 })
 export class UserProfileComponent implements OnInit {
   
-  url: string =  ""
+  url: string | null =  ""
   tempUsr: User = {
     UserName: "",
     Balance: 0,
@@ -37,21 +37,14 @@ export class UserProfileComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    }
 
-  ngOnInit(): void {
-    
+  async ngOnInit(){
+    if(localStorage.getItem("Profile_Image") == null){
+      localStorage.setItem("Profile_Image", "assets/defProfPic.png");
+    }
+    this.url = this.getprofilePic();
     this.token = this.auth.readToken();
-    this.url = this.token.ProfilePic;
-    this.transactionService.getUserTransactions(this.token.UserName).subscribe(data=>{
-      console.log(data)
-    })
-    Promise.resolve(this.transactionService.calculateBalance(this.token.UserName)).then(value=>{
-      this.Balance = value
-    })
-    this.router.events.subscribe((event: Event) => {
-      //if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
-      //  this.token = this.auth.readToken();
-      //}
-    });
+    let value = await this.transactionService.calculateBalance(this.token.UserName);
+    this.Balance = value
     this.betService.getUserBetsInProgress(this.token.UserName).subscribe(data=>{
       this.activeBets = data;
       this.activeBets.forEach((element:any) => {

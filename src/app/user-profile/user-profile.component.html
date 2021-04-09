@@ -1,47 +1,47 @@
-<div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
-    <img [src]="url" alt="" style="height: 150px; width: 150px; border-radius: 50%;">
-</div>
-<div>
-    <input type="file" id="changeimage" (change)="selectImage($event)">
-</div>
-<!-- CHANGE TO THE USER'S SELECTED USERNAME FOR LINKUP -->
-<div class="username">
-    <h1 *ngIf="token">{{token.UserName}}</h1>
-    <h1 *ngIf="!(token)">Username</h1>
-</div>
-<div style="text-align: center;">
-    <mat-card mat-list-item class="user-stats leaderboard" id="home" (click)="home()">Home</mat-card>
-    <!-- <button class="logout-button" mat-raised-button type="Submit" (click)="logout()">Logout</button> -->
-    <!-- <button class="leaderboard-button" mat-raised-button type="Submit" (click)="leaderboard()">Leaderboard</button> -->
-</div>
-
-
-<mat-nav-list class="user-personal-information-list ">
-    <div class="personal">
-        <h3>Personal</h3>
+<div style="margin-right:5px">
+    <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
+        <label for="image">
+        <input type="file" name="image" id="image" style="display: none;" (change)="selectImage($event)">
+        <img [src]="url" alt="" style="height: 150px; width: 150px; border-radius: 50%;">
+    </label>
     </div>
-    <!-- THESE TWO SHOULD BE REPLACED WITH THE USER'S RANKING AND BALANCE -->
-    <mat-card mat-list-item class="user-stats " id="balance" *ngIf="token ">
-        <div class="earnings-text">Earnings</div>
-        <div class="balance-text">{{token.Balance}}</div>
-    </mat-card>
-    <mat-card mat-list-item class="user-stats " *ngIf="!(token) ">Theres no balance</mat-card>
-    <!--<mat-card mat-list-item class="user-stats " *ngIf="token">{{token.balance}}</mat-card>-->
-    <mat-card mat-list-item class="user-stats leaderboard" (click)="leaderboard()">Leaderboard</mat-card>
-    <mat-card mat-list-item class="user-stats leaderboard" id="logout" (click)="logout()">Logout</mat-card>
-</mat-nav-list>
+    <!-- CHANGE TO THE USER'S SELECTED USERNAME FOR LINKUP -->
+    <div class="username">
+        <h1 *ngIf="token">{{token.UserName}}</h1>
+        <h1 *ngIf="!(token)">Username</h1>
+    </div>
+    <div style="text-align: center;">
+        <mat-card mat-list-item class="user-stats leaderboard" id="home" (click)="home()">Home</mat-card>
+        <!-- <button class="logout-button" mat-raised-button type="Submit" (click)="logout()">Logout</button> -->
+        <!-- <button class="leaderboard-button" mat-raised-button type="Submit" (click)="leaderboard()">Leaderboard</button> -->
+    </div>
 
-<div class="user-personal-list-div ">
-    <mat-nav-list class="user-active-bets-list ">
-        <div class="user-active-bets">
-            <h3>Active Bets</h3>
+    <mat-nav-list class="user-personal-information-list ">
+        <div class="personal">
+            <h3>Personal</h3>
         </div>
-        <div *ngFor="let bet of currentGames">
-            <a routerLink="/match/{{bet._id}}">
-                <mat-card mat-list-item class="user-stats">
-                    <div>{{bet.name}}</div>
-                </mat-card>
-            </a>
-        </div>
+        <!-- THESE TWO SHOULD BE REPLACED WITH THE USER'S RANKING AND BALANCE -->
+        <mat-card mat-list-item class="user-stats " id="balance" *ngIf="token ">
+            <div class="earnings-text">Earnings</div>
+            <div class="balance-text">{{Balance}}</div>
+        </mat-card>
+        <mat-card mat-list-item class="user-stats " *ngIf="!(token) ">Theres no balance</mat-card>
+        <mat-card mat-list-item class="user-stats leaderboard" (click)="leaderboard()">Leaderboard</mat-card>
+        <mat-card mat-list-item class="user-stats leaderboard" [routerLink]="['/history']">History</mat-card>
+        <mat-card mat-list-item class="user-stats leaderboard" id="logout" (click)="logout()">Logout</mat-card>
     </mat-nav-list>
+    <div class="user-personal-list-div ">
+        <mat-nav-list class="user-active-bets-list ">
+            <div class="user-active-bets">
+                <h3>Active Bets</h3>
+            </div>
+            <div *ngFor="let bet of currentGames; let i = index;">
+                <a *ngIf='bet.status!="finished"' class="active-bet" routerLink="/match/{{bet._id}}">
+                    <mat-card mat-list-item class="user-stats" id="bet">
+                        <div>{{bet.name}}</div>
+                    </mat-card>
+                </a>
+            </div>
+        </mat-nav-list>
+    </div>
 </div>

@@ -10,6 +10,7 @@ import { Transaction } from '../Transaction'
 import { AuthenticationService } from '../authentication.service';
 import { TransactionService } from '../transaction.service';
 import { UserDataService } from '../user-data.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-matchpage',
@@ -29,9 +30,15 @@ export class MatchpageComponent implements OnInit {
   teamChoice!: string;
   bettingAmount!: Number;
   currentBet = new Bet;
+  totalBetTeam1= 0;
+  totalBetTeam2= 0;
+  totalBet:number = 0;
+  totalBetTeam1Percentage:number = 0;
+  totalBetTeam2Percentage:number = 0;
   token!: any;
   activeBets!: any;
   alreadyBet!: boolean;
+  currentDate = new Date();
   constructor(private service:GameDataService,private breakpointObserver: BreakpointObserver,
               private route: ActivatedRoute, private router: Router,private betService:BettingService, private auth: AuthenticationService, private transactionService:TransactionService, private userService:UserDataService ) {
              
@@ -42,6 +49,7 @@ export class MatchpageComponent implements OnInit {
     this.querySub = this.route.params.subscribe(params=>{
       this.service.getGameById(params['id']).subscribe(data=>{
         this.Game = data;
+        console.log(this.Game)
         this.betService.getUserBetsInProgress(this.token.UserName).subscribe(data=>{
           this.activeBets = data;
           this.alreadyBet = false;
@@ -52,9 +60,30 @@ export class MatchpageComponent implements OnInit {
             }
           });
         })
+        this.userService.getAllUsers().subscribe(data=>{
+          data.forEach((element:any)=>{
+            this.betService.getUserBetsInProgress(element.UserName).subscribe(userBets=>{
+              userBets.forEach((element:any)=>{
+                if(element.TeamId==this.Game.opponents[0].opponent.id){
+                  this.totalBetTeam1+=element.Amount
+                  this.totalBet+=element.Amount
+                }else if(element.TeamId==this.Game.opponents[1].opponent.id){
+                  this.totalBetTeam2+=element.Amount
+                  this.totalBet+=element.Amount
+                }
+              })
+              if(this.totalBet!=0){
+                this.totalBetTeam1Percentage=parseInt((this.totalBetTeam1/this.totalBet*100).toFixed(2));
+                this.totalBetTeam2Percentage=parseInt((this.totalBetTeam2/this.totalBet*100).toFixed(2));
+              }else{
+                this.totalBetTeam1Percentage=0;
+                this.totalBetTeam2Percentage=0;
+              }
+            })
+          })
+        })
       });
     })
-    
   }
   onSubmit(): void{
     if(this.alreadyBet!=true){

@@ -28,7 +28,7 @@ export class GamespageComponent implements OnInit {
 
   ngOnInit(): void {
     this.querySub = this.route.params.subscribe(params=>{
-      this.service.getGamesByGenre(params['id']).subscribe(data=>{
+      this.service.getGamesByGenre(params['id'],"1","100").subscribe(data=>{
         this.Games = data;
       });
     })
