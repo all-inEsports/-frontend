@@ -17,7 +17,16 @@
                             {{Game?.opponents[0]?.opponent?.name}} vs. {{Game?.opponents[1]?.opponent?.name}}
                         </div>
                     </mat-card-title>
-                    <mat-card-title class="game-date">{{Game?.begin_at | date:'yyyy-MM-dd'}}</mat-card-title>
+                    <mat-card-title *ngIf="!((Game?.begin_at|date:'yyyy-MM-dd')==(currentDate|date:'yyyy-MM-dd'))" class="game-date">{{Game?.begin_at | date:'yyyy-MM-dd'}}
+                        <div style="font-size: 20px;margin-top: 5px; margin-bottom:5px">
+                            <a class="viewGame" href="{{Game?.official_stream_url}}" target="_blank">View Game!</a>
+                        </div>
+                    </mat-card-title>
+                    <mat-card-title *ngIf="((Game?.begin_at|date:'yyyy-MM-dd')==(currentDate|date:'yyyy-MM-dd'))" class="game-date">{{Game?.begin_at | date:'yyyy-MM-dd'}} - Live Today!<br>
+                        <div style="font-size: 20px;margin-top: 5px; margin-bottom:5px">
+                            <a class="viewGame" href="{{Game?.official_stream_url}}" target="_blank">View Game!</a>
+                        </div>
+                    </mat-card-title>
                     <mat-card-title class="number-of-games">Number of Games: {{Game?.number_of_games}}</mat-card-title>
                     <div *ngIf="alreadyBet==true; else elseBlock">
                         <mat-card-content class="main-content">Bet already placed!</mat-card-content>
@@ -32,15 +41,22 @@
                     </div>
                     <ng-template #elseBlock>
                         <mat-card-content class="place-your-bet">Place your bet!</mat-card-content>
+                        <mat-progress-bar mode="determinate" value="{{totalBetTeam1Percentage}}" style="width:25%;margin-left: auto;margin-right:auto"></mat-progress-bar>
                         <form class="bettingForm" (ngSubmit)="onSubmit()" #bettingForm="ngForm">
                             <mat-card-content class="teamChoiceGroup">
                                 <mat-button-toggle-group required [(ngModel)]="teamChoice" name="teamChoice">
-                                    <mat-button-toggle class="choiceButton" value="{{Game?.opponents[0]?.opponent?.name}}"><img class="teamImage" src="{{Game?.opponents[0]?.opponent?.image_url}}"></mat-button-toggle>
-                                    <mat-button-toggle class="choiceButton" value="{{Game?.opponents[1]?.opponent?.name}}"><img class="teamImage" src="{{Game?.opponents[1]?.opponent?.image_url}}"></mat-button-toggle>
+                                    <mat-button-toggle class="choiceButton" value="{{Game?.opponents[0]?.opponent?.name}}"><img class="teamImage" src="{{Game?.opponents[0]?.opponent?.image_url}}"><br>
+                                        <div class="totalBet">Total Currently Bet: {{totalBetTeam1}}</div>
+                                        <div class="totalBet">Total Percentage: {{totalBetTeam1Percentage}}%</div>
+                                    </mat-button-toggle>
+                                    <mat-button-toggle class="choiceButton" value="{{Game?.opponents[1]?.opponent?.name}}"><img class="teamImage" src="{{Game?.opponents[1]?.opponent?.image_url}}"><br>
+                                        <div class="totalBet">Total Currently Bet: {{totalBetTeam2}}</div>
+                                        <div class="totalBet">Total Percentage: {{totalBetTeam2Percentage}}%</div>
+                                    </mat-button-toggle>
                                 </mat-button-toggle-group>
                             </mat-card-content>
-                            <mat-card-content style="color: rgba(255, 255, 255, .37);" *ngIf="teamChoice==null">Please select a team</mat-card-content>
-                            <mat-card-content style="color: rgba(255, 255, 255, .37);" *ngIf="teamChoice!=null">You have selected team: {{teamChoice}}</mat-card-content>
+                            <mat-card-content style="color: rgba(255, 255, 255, .37); margin-bottom:0px;" *ngIf="teamChoice==null">Please select a team</mat-card-content>
+                            <mat-card-content style="color: rgba(255, 255, 255, .37); margin-bottom:0px;" *ngIf="teamChoice!=null">You have selected team: {{teamChoice}}</mat-card-content>
                             <mat-form-field color="primary" appearance="legacy" class="example-full-width">
                                 <mat-label class="bet-amount-input" style="color:rgba(255, 255, 255, .37)">Enter Amount</mat-label>
                                 <input matInput type="text" name="bettingAmount" id="bettingAmount" [(ngModel)]="bettingAmount" required>

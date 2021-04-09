@@ -3,9 +3,10 @@
 }
 
 .sidenav-container,
-.toolbar{
+.toolbar {
     background-color: #121212;
 }
+
 .match-game-header {
     opacity: 99.9%;
     filter: drop-shadow(0 5px 3px black);
@@ -146,22 +147,22 @@ h1 {
     width: 0;
 }
 
-
 .first {
     background-color: #bf9223 !important;
-    background: linear-gradient(to right bottom, rgba(253, 181, 0, 0.9), rgba(211, 156, 18, 0.5))!important; 
-    border: 1px solid rgba(191, 146, 35,
-    1);
+    background: linear-gradient(to right bottom, rgba(253, 181, 0, 0.9), rgba(211, 156, 18, 0.5))!important;
+    border: 1px solid rgba(191, 146, 35, 1);
 }
+
 .second {
     /* background-color: #848482 !important; */
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(190, 190, 187, 0.6))!important; 
     border: 1px solid rgba(132, 132, 130,.1);
 }
+
 .third {
     background-color: #B77333 !important;
-    background: linear-gradient(to right bottom, rgba(255, 123, 0, 0.3), rgba(146, 77, 12, 0.3))!important; 
-    border: 1px solid rgba(183, 115, 51,.1)
+    background: linear-gradient(to right bottom, rgba(255, 123, 0, 0.3), rgba(146, 77, 12, 0.3))!important;
+    border: 1px solid rgba(183, 115, 51, .1)
 }
 
 .match-game-entry {
@@ -169,10 +170,9 @@ h1 {
     margin-bottom: 10px;
     margin-right: 10px;
     background-color: #25262c;
-    background: linear-gradient(to right bottom, rgba(255,255,255,.1), rgba(255,255,255,0.1));
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, .1), rgba(255, 255, 255, 0.1));
     border: 1px solid rgba(255, 255, 255, .02);
     text-align: center;
-    cursor: pointer;
     -webkit-touch-callout: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
@@ -222,7 +222,8 @@ h1 {
     color: rgba(255, 255, 255, .37);
     padding-bottom: 15px;
 }
-.searchBox{
+
+.searchBox {
     margin-left: 5%;
 }
 /* Can play with that anytime */

@@ -31,6 +31,7 @@ export class TransactionhistoryComponent implements OnInit {
     this.transactionService.getUserTransactions(this.token.UserName).subscribe(data=>{
       this.history=data;
       this.history.reverse()
+      console.log(this.history)
     })
   }
 }

@@ -35,7 +35,6 @@ export class UserProfileComponent implements OnInit {
     this.Balance = value
     this.betService.getUserBetsInProgress(this.token.UserName).subscribe(data=>{
       this.activeBets = data;
-      console.log(this.activeBets)
       this.activeBets.forEach((element:any) => {
         this.service.getGameById(element.MatchId).subscribe(data=>{
           this.currentGames.push(data)
