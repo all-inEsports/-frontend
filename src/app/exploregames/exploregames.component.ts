@@ -26,7 +26,7 @@ export class ExploregamesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getAllGames().subscribe(games_ =>
+    this.service.getAllGames("1","100").subscribe(games_ =>
       this.Games = games_
     );
     

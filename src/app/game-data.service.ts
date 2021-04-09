@@ -18,10 +18,10 @@ export class GameDataService {
   getGameById(id:string):Observable<any[]>{
     return this.http.get<any[]>(`https://gamedataservice.herokuapp.com/ps/games/${id}`);
   }
-  getAllGames():Observable<any[]>{
-    return this.http.get<any[]>(`${GAME_API}/ps/games?page=1&perPage=100`);
+  getAllGames(page:string,perPage:string):Observable<any[]>{
+    return this.http.get<any[]>(`${GAME_API}/ps/games?page=${page}&perPage=${perPage}&date=`+Date.now());
   }
-  getGamesByGenre(id:string):Observable<any[]>{
-    return this.http.get<any[]>(`${GAME_API}/ps/games?game=${id}&page=1&perPage=100`);
+  getGamesByGenre(id:string,page:string,perPage:string):Observable<any[]>{
+    return this.http.get<any[]>(`${GAME_API}/ps/games?game=${id}&page=${page}&perPage=${perPage}&date=`+Date.now());
   }
 }
