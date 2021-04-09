@@ -154,7 +154,7 @@ h1 {
     1);
 }
 .second {
-    background-color: #848482 !important;
+    /* background-color: #848482 !important; */
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(190, 190, 187, 0.6))!important; 
     border: 1px solid rgba(132, 132, 130,.1);
 }
@@ -224,4 +224,40 @@ h1 {
 }
 .searchBox{
     margin-left: 5%;
+}
+/* Can play with that anytime */
+.all-in-logo{
+    animation: fadeinout 1.25s linear 1 forwards;
+    animation-iteration-count: infinite;
+    margin: auto;
+}
+@keyframes fadeinout{
+    0%{opacity: 0.15;}
+    /* 25%{opacity: .5;} */
+    50%{opacity: 1;}
+    75%{opacity: 1;}
+    /* 75%{opacity: .5;} */
+    100%{opacity: 0;}
+}
+.user-profile-image{
+    padding: 0px;
+    float: left;
+    height: 100px;
+    width: 100px;
+    margin-left: 50px;
+}
+.user-name{
+    float: middle;
+    margin: auto;
+}
+.ranking-number{
+    float: left;
+    margin-top: 25px;
+    margin-left: 40px;
+}
+.user-balance{
+    float:right;
+    margin-top: 20px;
+    margin-right:125px;
+    
 }
