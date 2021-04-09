@@ -16,9 +16,19 @@ import { from } from 'rxjs';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-
+  
   url: string =  ""
-  tempUsr!: User;
+  tempUsr: User = {
+    UserName: "",
+    Balance: 0,
+    Password: "",
+    ProfilePic: "",
+    _id: "",
+    _v: 0,
+    Email: "",
+    IsAdmin: false,
+    Date: new Date
+  };
   public token: any;
   activeBets!: any;
   currentGames= new Array;
@@ -80,25 +90,39 @@ export class UserProfileComponent implements OnInit {
    
   }
   selectImage(event: any){
+    let tmpurl = ""
     if(event.target.files){
       var reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
       reader.onload = (event: any) => {
-        this.userData.getUserById(this.token._id).subscribe((user)=> {
-          this.tempUsr = user;
-        });
-        this.tempUsr.ProfilePic = event.target.result;
-        this.userData.update(this.tempUsr).subscribe();
-        this.tempUsr = new User;
-
-        this.auth.refreshtoken().subscribe((obj)=>{
-          if(obj.token){
-            localStorage.removeItem('access_token');
-            localStorage.setItem('access_token', obj.token);
-            window.location.reload();
-          }
-        })
+        tmpurl = event.target.result;       
       }
+
+      this.userData.getUserById(this.token._id).subscribe((user)=> {
+        this.tempUsr.Balance = user.Balance;
+        this.tempUsr.Date = user.Date;
+        this.tempUsr.Email = user.Email;
+        this.tempUsr.Password = user.Password;
+        this.tempUsr.UserName = user.UserName;
+        this.tempUsr._id = user._id;
+        this.tempUsr._v = user._v;
+        this.tempUsr.ProfilePic = tmpurl;
+      });
+      {
+        console.log("This is the temp User")
+        console.log(this.tempUsr);
+        this.userData.update(this.tempUsr).subscribe(async (obj)=>{
+          if(obj.token){
+            console.log(obj.token)
+          localStorage.setItem('access_token', obj.token);
+          this.token = this.auth.readToken();
+          }
+          console.log("this is the token img: "+this.token.ProfilePic)
+        })
+        //window.location.reload();
+      }
+     
+      
     }
   }
 

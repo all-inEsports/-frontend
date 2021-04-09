@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user.model';
 import { USER_API } from './api.constants';
 import { Observable } from 'rxjs';
+interface ImageInfo{
+  title:string;
+  description:string;
+  link:string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserDataService {
 
   constructor(private http: HttpClient) { }
