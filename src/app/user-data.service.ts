@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user.model';
 import { USER_API } from './api.constants';
 import { Observable } from 'rxjs';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 interface ImageInfo{
   title:string;
   description:string;
@@ -44,6 +45,14 @@ export class UserDataService {
       perPage: perPage
     }
     return this.http.get<User[]>(`${USER_API}/v1/users?`, {params});
+  }
+
+  postImage(user: User, image: File):Observable<any>{
+    return this.http.post<any>(`http://localhost:3000/v1/images/${user._id}`, image);
+  }
+
+  getImage(user: User): Observable<any>{
+    return this.http.get<any>(`http://localhost:3000/v1/images/${user._id}`);
   }
 
 }
