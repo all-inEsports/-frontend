@@ -229,13 +229,15 @@ h1 {
 }
 
 .credit {
-    background-color: #42bf23 !important;
-    background: linear-gradient(to right bottom, #42bf23, #42bf23c2)!important;
-    border: 1px solid #42bf23;
+    /* background-color: #42bf23 !important; */
+    /* background: linear-gradient(to right bottom, #42bf23, #42bf23c2)!important; */
+    background: linear-gradient(to right bottom, rgba(10, 225, 10, .3), rgba(10, 225, 10, 0.2)) !important;
+    border: 1px solid rgba(10, 206, 10, .1);
 }
 
 .debt {
-    background-color: #bf2323 !important;
-    background: linear-gradient(to right bottom, #bf2323, #bf2323c2)!important;
-    border: 1px solid #bf2323;
+    /* background-color: #bf2323 !important; */
+    background: linear-gradient(to right bottom, rgba(225, 10, 10, 0.3), rgba(225, 10, 10, 0.2))!important;
+    /* background-color: linear-gradient(to right bottom, rgba(243, 20, 20, .01), rgba(226, 15, 15, 0.1)) !important; */
+    border: 1px solid  rgba(225, 10, 10, 0.1);
 }

@@ -26,7 +26,7 @@
     min-width: 100%;
     min-height: 100%;
     /* filter: blur(60px); */
-    filter: blur(90px);
+    filter: blur(75px);
 }
 
 h3 {
@@ -39,10 +39,11 @@ h1 {
 
 .sidenav {
     width: 300px;
-    background: rgba(35, 35, 37, 0.5);
-    background: rgba(60, 60, 60, 0.2);
-    border: 1px solid rgba(18, 18, 18, 0.45);
-    border: 1px solid rgba(60, 60, 60, 0.25);
+    /* background: rgba(35, 35, 37, 0.5); */
+    /* background: rgba(60, 60, 60, 0.2); */
+    background: linear-gradient(to right top, rgba(255, 255, 255, 0.2), rgba(18, 18, 18, .2)) !important;
+    /* border: 1px solid rgba(18, 18, 18, 0.45); */
+    border: 1px solid rgba(60, 60, 60, 0.1);
     padding: 10px 10px 10px 10px;
     margin-top: 10px;
     margin-bottom: 5px;
@@ -103,7 +104,7 @@ h1 {
 
 .active-matches-wrapper {
     max-height: 120px;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;

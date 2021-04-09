@@ -14,7 +14,7 @@
     font-style: normal;
     font-weight: normal;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #550798;
+    background-color: #692b65;
     margin-left: 25px;
 }
 
@@ -23,7 +23,7 @@
     font-style: normal;
     font-weight: normal;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #550798;
+    background-color: #692b65;
 }
 
 .leaderboard-button {
@@ -32,7 +32,7 @@
     font-weight: normal;
     margin-top: 10px;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #550798;
+    background-color: #692b65;
 }
 
 h3 {
@@ -51,7 +51,7 @@ h1 {
 .leaderboard {
     text-align: center;
     cursor: pointer;
-    background-color: #550798 !important;
+    background-color: #692b65 !important;
 }
 
 .sidenav .mat-toolbar {
