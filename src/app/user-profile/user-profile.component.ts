@@ -20,11 +20,17 @@ export class UserProfileComponent implements OnInit {
   public token: any;
   activeBets!: any;
   currentGames= new Array;
+  unreadNotifications: Number;
   Balance!: any;
   constructor(private router: Router, private auth: AuthenticationService, private betService:BettingService,private service:GameDataService, private userData:UserDataService, private transactionService:TransactionService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.unreadNotifications = 0;
    }
-
+  ngOnChange(){
+    this.betService.getAllUserNotification(this.token.UserName).subscribe(data=>{
+      this.unreadNotifications = data.filter(e => !e.IsRead).length;
+    })
+  }
   async ngOnInit(){
     if(localStorage.getItem("Profile_Image") == null){
       localStorage.setItem("Profile_Image", "assets/defProfPic.png");
@@ -48,6 +54,9 @@ export class UserProfileComponent implements OnInit {
   }
   public leaderboard(){
     this.router.navigate(['/leaderboard']);
+  }
+  public notifications(){
+    this.router.navigate(['/notifications']);
   }
   public logout(){
     this.url = "";
