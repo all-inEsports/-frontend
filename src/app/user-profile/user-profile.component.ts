@@ -32,11 +32,19 @@ export class UserProfileComponent implements OnInit {
   public token: any;
   activeBets!: any;
   currentGames= new Array;
+  unreadNotifications: Number;
   Balance!: any;
+  notifys: any[];
   constructor(private router: Router, private auth: AuthenticationService, private betService:BettingService,private service:GameDataService, private userData:UserDataService, private transactionService:TransactionService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.unreadNotifications = 0;
+    this.notifys = [];
    }
-
+  ngOnChange(){
+    this.betService.getAllUserNotification(this.token.UserName).subscribe(data=>{
+      this.unreadNotifications = data.filter(e => !e.IsRead).length;
+    })
+  }
   async ngOnInit(){
     this.token = this.auth.readToken();
     this.url = "https://dxpjqktjzz8fz.cloudfront.net/" + this.token._id + ".png"
@@ -58,6 +66,12 @@ export class UserProfileComponent implements OnInit {
   }
   public leaderboard(){
     this.router.navigate(['/leaderboard']);
+  }
+  public notifications(){
+    this.notifys.filter(e => !e.IsRead).forEach(e =>{
+      this.betService.resolveNotification(e);
+    })
+    this.router.navigate(['/notifications']);
   }
   public logout(){
     //this.url = "";
