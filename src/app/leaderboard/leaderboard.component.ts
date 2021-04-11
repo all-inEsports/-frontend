@@ -38,7 +38,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   changeSource(event: any){
-    this.url = "assets/defProfPic.png"
+    event.target.src = "assets/defProfPic.png"
   }
 
 }
