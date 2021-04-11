@@ -29,7 +29,7 @@
                     </div>
                     <ng-template #elseBlock>
                         <div *ngFor="let notification of  Notifications">
-                            <mat-card [routerLink]="['/match',notification.GameId]" class="match-game-entry first"
+                            <mat-card [routerLink]="['/match',notification.MatchId]" class="match-game-entry first"
                                 *ngIf="notification.IsRead">
                                 <!-- All of these are going to need to be changed to reflect the user's individual profile pictures -->
                                 <mat-card-title class="team-name-container"><img src="../../assets/defProfPic.png"

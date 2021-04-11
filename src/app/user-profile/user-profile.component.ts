@@ -22,9 +22,11 @@ export class UserProfileComponent implements OnInit {
   currentGames= new Array;
   unreadNotifications: Number;
   Balance!: any;
+  notifys: any[];
   constructor(private router: Router, private auth: AuthenticationService, private betService:BettingService,private service:GameDataService, private userData:UserDataService, private transactionService:TransactionService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.unreadNotifications = 0;
+    this.notifys = [];
    }
   ngOnChange(){
     this.betService.getAllUserNotification(this.token.UserName).subscribe(data=>{
@@ -37,6 +39,10 @@ export class UserProfileComponent implements OnInit {
     }
     this.url = this.getprofilePic();
     this.token = this.auth.readToken();
+    this.betService.getAllUserNotification(this.token.UserName).subscribe(data=>{
+      this.unreadNotifications = data.filter(e => !e.IsRead).length;
+      this.notifys = data;
+    })
     let value = await this.transactionService.calculateBalance(this.token.UserName);
     this.Balance = value
     this.betService.getUserBetsInProgress(this.token.UserName).subscribe(data=>{
@@ -56,6 +62,9 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['/leaderboard']);
   }
   public notifications(){
+    this.notifys.filter(e => !e.IsRead).forEach(e =>{
+      this.betService.resolveNotification(e);
+    })
     this.router.navigate(['/notifications']);
   }
   public logout(){

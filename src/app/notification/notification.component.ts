@@ -27,14 +27,28 @@ export class NotificationComponent implements OnInit {
     this.Notifications = [];
   }
 
-  ngOnInit(): void {
-  }
-  ngOnChanges(): void{
-    this.token = this.auth.readToken();
-    this.service.getAllUserNotification(this.token.UserName).subscribe(data=>{
+  async ngOnInit(){
+	 this.token = this.auth.readToken();
+   await  this.service.getAllUserNotification(this.token.UserName).subscribe(data=>{
+      console.log(data)
       this.Notifications = data;
     })
-    this.Notifications.filter(e => !e.IsRead).forEach(e =>{
+   await this.Notifications.filter(e => !e.IsRead).forEach(e =>{
+      e.IsRead = true;
+      console.log(e)
+      this.service.resolveNotification(e).subscribe()
+    })
+
+  }
+  async ngOnChanges(){
+    this.token = this.auth.readToken();
+    await this.service.getAllUserNotification(this.token.UserName).subscribe(data=>{
+      console.log(data)
+      this.Notifications = data;
+    })
+    await this.Notifications.filter(e => !e.IsRead).forEach(e =>{
+      e.IsRead = true;
+      console.log(e)
       this.service.resolveNotification(e).subscribe()
     })
   }
