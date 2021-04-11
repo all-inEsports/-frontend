@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user.model';
 import { USER_API } from './api.constants';
 import { Observable } from 'rxjs';
+import { AuthenticationService } from './authentication.service';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 interface ImageInfo{
   title:string;
@@ -16,7 +17,7 @@ interface ImageInfo{
 
 export class UserDataService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
   getUsers():Observable<User[]> {
     const perPage = '' + 50;
@@ -48,11 +49,14 @@ export class UserDataService {
   }
 
   postImage(user: User, image: File):Observable<any>{
-    return this.http.post<any>(`http://localhost:3000/v1/images/${user._id}`, image);
-  }
-
-  getImage(user: User): Observable<any>{
-    return this.http.get<any>(`http://localhost:3000/v1/images/${user._id}`);
+    var formData = new FormData()
+    console.log(image)
+    formData.append("filename", "" + user._id + ".png")
+    formData.append("file", image)
+    const headers = {'Accept': 'application/json' };
+    let options = { headers: headers };
+    return this.http.post<any>(`https://allin-cloudfront.herokuapp.com/api/upload`, formData);
+    //return this.http.post<any>(`http://localhost:3000/api/upload`, formData, options);
   }
 
 }

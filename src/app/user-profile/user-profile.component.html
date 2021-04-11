@@ -2,7 +2,8 @@
     <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
         <label for="image">
         <input type="file" name="image" id="image" style="display: none;" (change)="selectImage($event)">
-        <img [src]="url" alt="" style="height: 150px; width: 150px; border-radius: 50%;">
+        <!--<img src="https://dxpjqktjzz8fz.cloudfront.net/606ce87437c6150015488007.png" alt="" style="height: 150px; width: 150px; border-radius: 50%;">-->
+        <img [src]="url" alt="" style="height: 150px; width: 150px; border-radius: 50%;" (error)="updateDefault($event)">
     </label>
     </div>
     <!-- CHANGE TO THE USER'S SELECTED USERNAME FOR LINKUP -->
@@ -23,7 +24,7 @@
         <!-- THESE TWO SHOULD BE REPLACED WITH THE USER'S RANKING AND BALANCE -->
         <mat-card mat-list-item class="user-stats " id="balance" *ngIf="token ">
             <div class="earnings-text">Earnings</div>
-            <div class="balance-text">{{Balance}}</div>
+            <div class="balance-text">{{token.Balance}}</div>
         </mat-card>
         <mat-card mat-list-item class="user-stats " *ngIf="!(token) ">Theres no balance</mat-card>
         <mat-card mat-list-item class="user-stats leaderboard" (click)="leaderboard()">Leaderboard</mat-card>

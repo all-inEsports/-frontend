@@ -17,7 +17,7 @@ import { from } from 'rxjs';
 })
 export class UserProfileComponent implements OnInit {
   
-  url: string | null =  ""
+  url = ""
   tempUsr: User = {
     UserName: "",
     Balance: 0,
@@ -38,11 +38,9 @@ export class UserProfileComponent implements OnInit {
    }
 
   async ngOnInit(){
-    if(localStorage.getItem("Profile_Image") == null){
-      localStorage.setItem("Profile_Image", "assets/defProfPic.png");
-    }
-    this.url = this.getprofilePic();
     this.token = this.auth.readToken();
+    this.url = "https://dxpjqktjzz8fz.cloudfront.net/" + this.token._id + ".png"
+    console.log(this.url)
     let value = await this.transactionService.calculateBalance(this.token.UserName);
     this.Balance = value
     this.betService.getUserBetsInProgress(this.token.UserName).subscribe(data=>{
@@ -62,7 +60,7 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['/leaderboard']);
   }
   public logout(){
-    this.url = "";
+    //this.url = "";
     //localStorage.removeItem("Profile_Image")
     this.auth.logout();
     this.router.navigate(['/']);
@@ -82,45 +80,43 @@ export class UserProfileComponent implements OnInit {
   
    
   }
+
   selectImage(event: any){
-    let tmpurl = ""
-    if(event.target.files){
-      var reader = new FileReader()
-      reader.readAsDataURL(event.target.files[0])
-      reader.onload = (event: any) => {
-        tmpurl = event.target.result;       
-      }
+    let tmpfile: File;
+    //this.token = this.auth.readToken();
+    console.log("Token._id: " + this.token._id)
+    this.userData.getUserById(this.token._id).subscribe((user)=> {
+      this.tempUsr.Balance = user.Balance;
+      this.tempUsr.Date = user.Date;
+      this.tempUsr.Email = user.Email;
+      this.tempUsr.Password = user.Password;
+      this.tempUsr.UserName = user.UserName;
+      this.tempUsr._id = user._id;
+      console.log("Temp user ID: " + this.tempUsr._id + " User_id: " + user._id)
+      this.tempUsr._v = user._v;
+      //this.tempUsr.ProfilePic = tmpurl;
 
-      this.userData.getUserById(this.token._id).subscribe((user)=> {
-        this.tempUsr.Balance = user.Balance;
-        this.tempUsr.Date = user.Date;
-        this.tempUsr.Email = user.Email;
-        this.tempUsr.Password = user.Password;
-        this.tempUsr.UserName = user.UserName;
-        this.tempUsr._id = user._id;
-        this.tempUsr._v = user._v;
-        this.tempUsr.ProfilePic = tmpurl;
-      });
-      {
-        console.log("This is the temp User")
-        console.log(this.tempUsr);
-        this.userData.update(this.tempUsr).subscribe(async (obj)=>{
-          if(obj.token){
-            console.log(obj.token)
-          localStorage.setItem('access_token', obj.token);
-          this.token = this.auth.readToken();
-          }
-          console.log("this is the token img: "+this.token.ProfilePic)
-        })
-        //window.location.reload();
+      if(event.target.files){
+        console.log(event.target.files)
+        //var reader = new FileReader()
+        this.userData.postImage(this.tempUsr, event.target.files[0]).subscribe(()=>{
+          this.token.ProfilePic = `https://dxpjqktjzz8fz.cloudfront.net/${this.tempUsr._id}.png`;
+          this.url = this.token.ProfilePic;
+          window.location.reload();
+        });
+        /*reader.readAsDataURL(event.target.files[0])
+        reader.onload = (event: any) => {
+          tmpfile = event.target.result;  
+          
+    
+        }*/
       }
-     
+      //window.location.reload();
       
-    }
+    });
   }
 
-  public getprofilePic(): string | null {
-    return localStorage.getItem("Profile_Image");
+  updateDefault(event: any){
+    this.url = "assets/defProfPic.png";
   }
-
 }

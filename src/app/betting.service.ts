@@ -13,9 +13,7 @@ export class BettingService {
 
   getUserBetsInProgress(userName:string):Observable<Bet[]>{
     return this.http.get<any[]>(`${BETTING_API}/v1/user/bets/${userName}?InProgress=true`);
-  }
-
-  
+  }  
   newUserBet(bet:Bet):Observable<any>{
     return this.http.post<any>(`${BETTING_API}/v1/bet`, bet);
   }
