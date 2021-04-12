@@ -13,6 +13,8 @@ const helper = new JwtHelperService();
   providedIn: 'root'
 })
 export class AuthenticationService {
+  u!: string;
+  p!: string;
 
   constructor( private http: HttpClient ) { }
 
@@ -42,12 +44,26 @@ export class AuthenticationService {
 
   login(username:string,password:string): Observable<any> {
     // Attempt to login
+    this.u = username;
+    this.p = password;
     return this.http.post<any>(`${USER_API}/v1/login`, {username,password})
     .pipe(tap(data => console.log(data)) , catchError(this.errorHandler));
   }
 
+  refreshtoken(): Observable<any>{
+    let un = this.u;
+    let up = this.p;
+
+    return this.http.post<any>(`${USER_API}/v1/login`, {un, up})
+    .pipe(tap(data => console.log(data)) , catchError(this.errorHandler2));
+  }
+
   errorHandler(error: HttpErrorResponse){
     return observableThrowError(error.message || "Server Error");
+  }
+
+  errorHandler2(error: HttpErrorResponse){
+    return observableThrowError("Unable to refresh token.");
   }
 
   public logout() {

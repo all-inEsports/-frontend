@@ -1,0 +1,70 @@
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <app-user-profile></app-user-profile>
+    </mat-sidenav>
+    <mat-sidenav-content style="opacity: 90%; margin-top:10px;">
+        <video id="my-video" muted loop autoplay oncanplay="this.muted=true" oncanplay="this.play()"
+            onloadedmetadata="this.muted=true">
+            <source src="../../assets/video-temporary/slow-allin-bg.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <!-- Add Content Here -->
+        <!-- HOME PAGE BEGINS HERE -->
+        <app-exploregames></app-exploregames>
+        <!--  ACTIVE MATCHES  TODO: Write and NG-FOR to populate with current matches -->
+        <!-- NOTE: THE APPERANCE IS GOING TO CHANGE. I JUST TO MAKE SURE THAT EVERYTHING PLUGS IN NICELY -->
+        <!-- PS:   THE 'BOTTOM CONTAINER WILL BE SHIFTED UP TO MATCH THE AESTHETIC OF THE DESIGN' -->
+        <br>
+        <h1 class="match-game-header">NOTIFICATIONS</h1>
+        <div class="bottom-container">
+            <div class="match-game-container">
+                <div class="match-game-box">
+                    <div style="text-align:center" *ngIf="!Notifications[0]; else elseBlock">
+                        <!-- <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner> -->
+                        <img class="all-in-logo"
+                            src="https://cdn.discordapp.com/attachments/755101256825176307/824026110362124328/Desktop_-_22.png">
+                        <div class="team-name-container" class="all-in-logo">Loading Notifications</div>
+                    </div>
+                    <ng-template #elseBlock>
+                        <div *ngFor="let notification of  Notifications">
+                            <mat-card [routerLink]="['/match',notification.MatchId]" class="match-game-entry first"
+                                *ngIf="notification.IsRead">
+                                <!-- All of these are going to need to be changed to reflect the user's individual profile pictures -->
+                                <mat-card-title class="team-name-container"><img src="../../assets/defProfPic.png"
+                                        class="user-profile-image" alt=""></mat-card-title>
+                                <mat-card-title class="game-title-container">
+                                    <div class="game-title">
+                                        <p class="ranking-number" *ngIf="notification.AmountWon > 0">You Won
+                                            {{notification.AmountWon }} on this bet</p>
+                                        <p class="ranking-number" *ngIf="notification.AmountWon==0">You Lost this Bet
+                                        </p>
+                                    </div>
+                                </mat-card-title>
+                                <mat-card-title class="team-name-container">
+                                    <p class="user-name">Go To Match</p>
+                                </mat-card-title>
+                            </mat-card>
+                            <mat-card [routerLink]="['/match',notification.GameId]" class="match-game-entry second"
+                                *ngIf="!(notification.IsRead)">
+                                <!-- All of these are going to need to be changed to reflect the user's individual profile pictures -->
+                                <mat-card-title class="game-title-container">
+                                    <div class="game-title">
+                                        <p class="ranking-number" *ngIf="notification.AmountWon > 0">You Won
+                                            {{notification.AmountWon }} on this bet</p>
+                                        <p class="ranking-number" *ngIf="notification.AmountWon==0">You Lost this Bet
+                                        </p>
+                                    </div>
+                                </mat-card-title>
+                                <mat-card-title class="team-name-container">
+                                    <p class="user-name">Go To Match</p>
+                                </mat-card-title>
+                            </mat-card>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

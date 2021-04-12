@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
       this.user.Password = this.password;
       this.user.IsAdmin = false;
       this.user.Date = new Date();
-      this.user.ProfilePic = "default.png";
+      this.user.ProfilePic = "assets/defProfPic.png";
       this.user.Balance = 5000;
       this.data.register(this.user).subscribe(() => {
         this.transaction.addNewTransaction(new Transaction(this.user.UserName,this.user.Balance,'CREDIT',`Initialize User Balance 5000`)).subscribe();

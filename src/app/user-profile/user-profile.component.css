@@ -224,7 +224,8 @@ h1 {
 }
 .balance-text{
     margin: auto;
-    margin-left: 45px;
+    margin-left: auto;
+    margin-right: auto;    
 }
 
 .earnings-text{
@@ -244,3 +245,29 @@ h1 {
     background-color: rgba(205, 145, 6, .7);
     text-align: center;
 }
+.notification .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+}
+/* Jumping effect for notifs */
+.notification{
+    animation: .4s jump ease infinite alternate;
+}
+
+@keyframes jump{
+    0%{
+        transform: scale(1);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    }
+    100%{
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+    }
+}
+
+

@@ -13,7 +13,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
-
+  url = "https://dxpjqktjzz8fz.cloudfront.net/"
   searchText!: string;
   userRankings;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -35,6 +35,10 @@ export class LeaderboardComponent implements OnInit {
         this.userRankings.set(element,i)
       })
     });
+  }
+
+  changeSource(event: any){
+    event.target.src = "assets/defProfPic.png"
   }
 
 }

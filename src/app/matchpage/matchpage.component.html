@@ -41,7 +41,7 @@
                     </div>
                     <ng-template #elseBlock>
                         <mat-card-content class="place-your-bet">Place your bet!</mat-card-content>
-                        <mat-progress-bar mode="determinate" value="{{totalBetTeam1Percentage}}" style="width:25%;margin-left: auto;margin-right:auto"></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" class="wager-odds" value="{{totalBetTeam1Percentage}}" style="width:25%;margin-left: auto;margin-right:auto"></mat-progress-bar>
                         <form class="bettingForm" (ngSubmit)="onSubmit()" #bettingForm="ngForm">
                             <mat-card-content class="teamChoiceGroup">
                                 <mat-button-toggle-group required [(ngModel)]="teamChoice" name="teamChoice">

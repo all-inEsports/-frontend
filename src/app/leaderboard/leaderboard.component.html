@@ -34,7 +34,7 @@
                         <div *ngFor="let user of userRankings | keyvalue | filter:searchText">
                             <mat-card class="match-game-entry first" *ngIf="user.value==0">
                                 <!-- All of these are going to need to be changed to reflect the user's individual profile pictures -->
-                                <mat-card-title class="team-name-container"><img src="../../assets/defProfPic.png" class="user-profile-image" alt=""></mat-card-title>
+                                <mat-card-title class="team-name-container"><img src='{{"https://dxpjqktjzz8fz.cloudfront.net/" + user.key._id + ".png"}}' class="user-profile-image" alt="" (error)="changeSource($event)"></mat-card-title>
                                 <mat-card-title class="game-title-container">
                                     <div class="game-title">
                                         <p class="ranking-number">{{user.value+1}}</p>
@@ -44,7 +44,7 @@
                                 <mat-card-title class="team-name-container"><p class="user-name">{{user.key.UserName}}</p></mat-card-title>
                             </mat-card>
                             <mat-card class="match-game-entry second" *ngIf="user.value==1">
-                                <mat-card-title class="team-name-container"><img src="../../assets/defProfPic.png" class="user-profile-image" alt=""></mat-card-title>
+                                <mat-card-title class="team-name-container"><img src='{{"https://dxpjqktjzz8fz.cloudfront.net/" + user.key._id + ".png"}}' class="user-profile-image" alt="" (error)="changeSource($event)"></mat-card-title>
                                 <mat-card-title class="game-title-container">
                                     <div class="game-title">
                                         <p class="ranking-number">{{user.value+1}}</p>
@@ -54,7 +54,7 @@
                                 <mat-card-title class="team-name-container"><p class="user-name">{{user.key.UserName}}</p></mat-card-title>
                             </mat-card>
                             <mat-card class="match-game-entry third" *ngIf="user.value==2">
-                                <mat-card-title class="team-name-container"><img src="../../assets/defProfPic.png" class="user-profile-image" alt=""></mat-card-title>
+                                <mat-card-title class="team-name-container"><img src='{{"https://dxpjqktjzz8fz.cloudfront.net/" + user.key._id + ".png"}}' class="user-profile-image" alt="" (error)="changeSource($event)"></mat-card-title>
                                 <mat-card-title class="game-title-container">
                                     <div class="game-title">
                                         <p class="ranking-number">{{user.value+1}}</p>
@@ -64,7 +64,7 @@
                                 <mat-card-title class="team-name-container"><p class="user-name">{{user.key.UserName}}</p></mat-card-title>
                             </mat-card>
                             <mat-card class="match-game-entry" *ngIf="user.value>2">
-                                <mat-card-title class="team-name-container"><img src="../../assets/defProfPic.png" class="user-profile-image" alt=""></mat-card-title>
+                                <mat-card-title class="team-name-container"><img src='{{"https://dxpjqktjzz8fz.cloudfront.net/" + user.key._id + ".png"}}' class="user-profile-image" alt="" (error)="changeSource($event)"></mat-card-title>
                                 <mat-card-title class="game-title-container">
                                     <div class="game-title">
                                         <p class="ranking-number">{{user.value+1}}</p>
