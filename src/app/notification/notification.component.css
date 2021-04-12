@@ -155,8 +155,8 @@ h1 {
 
 .second {
     /* background-color: #848482 !important; */
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(190, 190, 187, 0.6))!important; 
-    border: 1px solid rgba(132, 132, 130,.1);
+    background: linear-gradient(to right bottom, rgba(176, 72, 98,.8), rgb(69,11, 67,.6))!important;
+    border: 1px solid rgba(176,72,98,.1);
 }
 
 .third {
@@ -255,6 +255,7 @@ h1 {
     float: left;
     margin-top: 25px;
     margin-left: 40px;
+    color: rgba(255, 255, 255, .87);
 }
 .user-balance{
     float:right;

@@ -246,6 +246,7 @@ h1 {
     height: 100px;
     width: 100px;
     margin-left: 50px;
+    border-radius: 5%;
 }
 .user-name{
     float: middle;
