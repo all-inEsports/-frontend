@@ -47,6 +47,10 @@ export class UserProfileComponent implements OnInit {
   }
   async ngOnInit(){
     this.token = this.auth.readToken();
+    this.betService.getAllUserNotification(this.token.UserName).subscribe(data=>{
+      this.unreadNotifications = data.filter(e => !e.IsRead).length;
+      this.notifys = data;
+    })
     this.url = "https://dxpjqktjzz8fz.cloudfront.net/" + this.token._id + ".png"
     console.log(this.url)
     let value = await this.transactionService.calculateBalance(this.token.UserName);
