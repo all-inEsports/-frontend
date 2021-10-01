@@ -129,6 +129,7 @@ h1 {
     position: relative;
     height: 585px;
     overflow-y: auto;
+    bottom: auto;
 }
 
 .match-game-container {
@@ -156,6 +157,7 @@ h1 {
 
 .match-game-entry {
     height: 30rem;
+    height: 490px;
     margin-bottom: 10px;
     margin-right: 10px;
     background-color: rgba(255, 255, 255, .09);
@@ -207,8 +209,9 @@ h1 {
 }
 
 .submitButton {
-    width: 250px;
-    height: 40px
+    width: 300px;
+    height: 40px;
+    bottom: 10px;
 }
 
 .submitButton:enabled {
@@ -309,10 +312,15 @@ h1 {
 
 .bet-amount-input {
     font-size: 14pt;
+    font-weight: 40;
 }
 
 .totalBet {
     height: 20px;
+    color: rgba(255, 255, 255, .60);
+
+    /* Interesting but not exactly appealing */
+    /* color: rgba(235, 213, 16, .87); */ 
 }
 
 .viewGame {
@@ -322,4 +330,13 @@ h1 {
 
 .viewGame:hover {
     color: rgba(235, 170, 16, .87)
+}
+
+.wager-odds{
+    height: 15px;
+    border-radius: 5px;
+}
+#bettingAmount{
+    font-size: 18pt;
+    color: rgba(255, 255, 255, .87);
 }

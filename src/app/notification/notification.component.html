@@ -25,7 +25,7 @@
                         <!-- <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner> -->
                         <img class="all-in-logo"
                             src="https://cdn.discordapp.com/attachments/755101256825176307/824026110362124328/Desktop_-_22.png">
-                        <div class="team-name-container" class="all-in-logo">Loading Leaderboard...</div>
+                        <div class="team-name-container" class="all-in-logo">Loading Notifications</div>
                     </div>
                     <ng-template #elseBlock>
                         <div *ngFor="let notification of  Notifications">
@@ -49,8 +49,6 @@
                             <mat-card [routerLink]="['/match',notification.GameId]" class="match-game-entry second"
                                 *ngIf="!(notification.IsRead)">
                                 <!-- All of these are going to need to be changed to reflect the user's individual profile pictures -->
-                                <mat-card-title class="team-name-container"><img src="../../assets/defProfPic.png"
-                                        class="user-profile-image" alt=""></mat-card-title>
                                 <mat-card-title class="game-title-container">
                                     <div class="game-title">
                                         <p class="ranking-number" *ngIf="notification.AmountWon > 0">You Won
